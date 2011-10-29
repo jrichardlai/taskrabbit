@@ -15,5 +15,7 @@ group :test do
   gem 'guard-rspec'
   gem 'rb-fsevent'
   gem 'growl'
+  gem 'vcr'
+  gem 'fakeweb'
   gem 'rcov', :require => nil
 end
