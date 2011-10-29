@@ -7,6 +7,12 @@ require 'taskrabbit'
 Bundler.setup
 Bundler.require :default, :test
 
+CASSETTES_PATH = File.join(File.dirname(__FILE__), "support", "cassettes")
+
+Taskrabbit.configure do |config|
+  config.base_uri = 'http://localhost:3000'
+end
+
 RSpec.configure do |config|
 end
 
