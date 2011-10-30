@@ -1,18 +1,19 @@
 module Taskrabbit
   module Config
-    DEFAULT_BASE_URI  = 'http://taskrabbit.com/'
-    DEFAULT_END_POINT = 'api/v1'
-    
+    DEFAULT_BASE_URI      = 'http://taskrabbit.com'
+    DEFAULT_END_POINT     = 'api/v1'
+    DEFAULT_CLIENT_SECRET = nil
+
     VALID_OPTIONS_KEYS = [
       :base_uri,
-      :end_point
+      :client_secret,
+      :endpoint
     ]
 
     attr_accessor *VALID_OPTIONS_KEYS
 
     # When this module is extended, set all configuration options to their default values
     def self.extended(base)
-      puts "extension"
       base.reset
     end
 
@@ -31,8 +32,9 @@ module Taskrabbit
     
     # Reset all configuration options to defaults
     def reset
-      self.base_uri           = DEFAULT_BASE_URI
-      self.end_point          = DEFAULT_END_POINT
+      self.base_uri      = DEFAULT_BASE_URI
+      self.endpoint      = DEFAULT_END_POINT
+      self.client_secret = DEFAULT_CLIENT_SECRET
       self
     end
     

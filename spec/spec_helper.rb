@@ -11,6 +11,7 @@ CASSETTES_PATH = File.join(File.dirname(__FILE__), "support", "cassettes")
 
 Taskrabbit.configure do |config|
   config.base_uri = 'http://localhost:3000'
+  config.client_secret = 'euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn'
 end
 
 RSpec.configure do |config|

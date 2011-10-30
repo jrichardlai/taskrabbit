@@ -3,6 +3,8 @@ module Taskrabbit
   autoload :Api,     "taskrabbit/api"
   autoload :Task,    "taskrabbit/task"
   autoload :Version, "taskrabbit/version"
+  autoload :Collection, "taskrabbit/collection"
+  autoload :Error, "taskrabbit/error"
 
   extend Config
 end
