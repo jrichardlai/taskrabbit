@@ -16,6 +16,10 @@ describe Taskrabbit::Api do
   end
   
   describe "api endpoints" do
+    #tr.tasks wont do the request
+    #tr.tasks.first will do the request
+    #tr.tasks.all
+    #tr.tasks.anything will do the request exect if using find !
     describe "#tasks" do
       before do
         @secret = Taskrabbit.client_secret
@@ -41,6 +45,19 @@ describe Taskrabbit::Api do
           tr_tasks.first.should be_instance_of(Taskrabbit::Task)
         end
       end
+    end
+    
+    describe "#find" do
+
+      it "should fetch tasks" do
+        tr = Taskrabbit::Api.new
+        VCR.use_cassette('find_task', :record => :new_episodes) do
+          tr_task = nil
+          expect { tr_task = tr.tasks.find(22545) }.to_not raise_error
+          tr_task.should be_instance_of(Taskrabbit::Task)
+        end
+      end
+      
     end
   end
 end

@@ -22,9 +22,9 @@ module Taskrabbit
       self.user_token = user_token if user_token
     end
 
-    def request_params(type)
+    def request_params(transformer)
       {
-        :transform => Api::collection_transformers[type],
+        :transform => transformer,
         :extra_request => {
           :headers => {'X-Client-Application' => client_secret.to_s},
           :endpoint => endpoint.to_s,
@@ -39,12 +39,16 @@ module Taskrabbit
       end
     end
 
-    def base_query_options
-      {:output => 'json'}
+    def request(method, path, transformer, options = {})
+      send(method, path, request_params(transformer).merge(options))
+    end
+
+    def users
+      @users ||= Proxy.new(self, User)
     end
 
     def tasks
-      get 'tasks', request_params(Task)
+      @tasks ||= Proxy.new(self, Task)
     end
   end
 end
