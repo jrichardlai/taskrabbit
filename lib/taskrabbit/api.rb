@@ -22,11 +22,15 @@ module Taskrabbit
       self.user_token = user_token if user_token
     end
 
-    def request_params(transformer)
+    def request_params(transformer, options = {})
       {
         :transform => transformer,
+        :extra_body => options,
         :extra_request => {
-          :headers => {'X-Client-Application' => client_secret.to_s},
+          :headers => {
+            'X-Client-Application' => client_secret.to_s, 
+            'Authorization' => "OAuth #{user_token.to_s}"
+          },
           :endpoint => endpoint.to_s,
           :base_uri => base_uri.to_s
         }
@@ -40,7 +44,7 @@ module Taskrabbit
     end
 
     def request(method, path, transformer, options = {})
-      send(method, path, request_params(transformer).merge(options))
+      send(method, path, request_params(transformer, options))
     end
 
     def users

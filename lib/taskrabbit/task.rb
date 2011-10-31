@@ -8,13 +8,17 @@ module Taskrabbit
         @found = api.request('get', 'tasks', Api::collection_transformers[self], options)
       end
 
-      def find(id, api)
+      def find(api, id)
         # if @found
           # find from users tasks if loaded 
           # @found.detect { |document| document.id == id }
         # else
           api.request('get', "tasks/#{id.to_s}", self)
         # end
+      end
+      
+      def create(api, params)
+        api.request('post', "tasks", self, :task => params)
       end
     end
   end

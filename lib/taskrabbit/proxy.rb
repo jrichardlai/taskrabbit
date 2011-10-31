@@ -17,7 +17,7 @@ module Taskrabbit
 
     def find(param, options={})
       return all(options) if param == :all
-      return @target.find(param, @api) if @target.respond_to?(:find)
+      return @target.find(@api, param) if @target.respond_to?(:find)
       # return proxy_found(options).detect { |document| document.id == param }
     end
 
@@ -32,7 +32,7 @@ module Taskrabbit
     # end
 
     def create(args)
-      @target.create(args, api) if @target.respond_to?(:create)
+      @target.create(@api, args) if @target.respond_to?(:create)
       # object = @target.new(args.merge({:api => @api}))
       # if obj = object.create
       #   return obj
