@@ -3,12 +3,12 @@
   request: !ruby/struct:VCR::Request 
     method: :post
     uri: http://localhost:3000/api/v1/tasks?
-    body: 
+    body: task[name]=My%20First%20Task&task[named_price]=20&task[city_id]=4
     headers: 
-      oauth: 
-      - ""
       x-client-application: 
       - euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn
+      authorization: 
+      - OAuth
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 401
@@ -17,11 +17,11 @@
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "88"
+      - "70"
       server: 
       - WEBrick/1.3.1 (Ruby/1.8.7/2010-04-19)
       date: 
-      - Sun, 30 Oct 2011 22:57:16 GMT
+      - Mon, 31 Oct 2011 05:05:47 GMT
       content-length: 
       - "63"
       cache-control: 

@@ -23,10 +23,6 @@ describe Taskrabbit do
   end
   
   describe "api defaults" do
-    it "should have a default client secret to nil" do
-      Taskrabbit.client_secret.should == nil
-    end
-
     it "should be able to set the client_secret" do
       Taskrabbit.client_secret = 'asecret'
       Taskrabbit.client_secret.should == 'asecret'

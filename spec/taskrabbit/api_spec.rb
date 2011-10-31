@@ -14,4 +14,14 @@ describe Taskrabbit::Api do
       }.to_not raise_error
     end
   end
+
+  it "should return an error if the client is not set" do
+    secret = Taskrabbit.client_secret
+    Taskrabbit.client_secret = nil
+    tr = Taskrabbit::Api.new
+    VCR.use_cassette('tasks/without_client', :record => :new_episodes) do
+      expect { tr.tasks.all }.to raise_error(Taskrabbit::Error, 'Missing valid client application')
+    end
+    Taskrabbit.client_secret = secret
+  end
 end

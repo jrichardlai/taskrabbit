@@ -1,6 +1,6 @@
 module Taskrabbit
   module Config
-    DEFAULT_BASE_URI      = 'http://taskrabbit.com'
+    DEFAULT_BASE_URI      = 'http://www.taskrabbit.com'
     DEFAULT_END_POINT     = 'api/v1'
     DEFAULT_CLIENT_SECRET = nil
 

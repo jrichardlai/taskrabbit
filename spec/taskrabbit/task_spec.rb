@@ -7,25 +7,9 @@ describe Taskrabbit::Task do
     #tr.tasks.all
     #tr.tasks.anything will do the request exect if using find !
     describe "#tasks" do
-      before do
-        @secret = Taskrabbit.client_secret
-      end
-
-      after do
-        Taskrabbit.client_secret = @secret
-      end
-
-      it "should return an error if the client is not set" do
-        Taskrabbit.client_secret = nil
-        tr = Taskrabbit::Api.new
-        VCR.use_cassette('tasks/without_client', :record => :new_episodes) do
-          expect { tr.tasks.all }.to raise_error(Taskrabbit::Error, 'Missing valid client application')
-        end
-      end
-
       it "should fetch tasks" do
         tr = Taskrabbit::Api.new
-        VCR.use_cassette('tasks', :record => :new_episodes) do
+        VCR.use_cassette('tasks/all', :record => :new_episodes) do
           tr_tasks = nil
           expect { tr_tasks = tr.tasks.all }.to_not raise_error
           tr_tasks.first.should be_instance_of(Taskrabbit::Task)
@@ -76,7 +60,7 @@ describe Taskrabbit::Task do
 
         it "should create the task if the user is authenticated and has a credit card" do
           tr = Taskrabbit::Api.new('cNPyB6KypcdDjFb8KhQ7EOZzBpwcenMMvnQBbSHM')
-          VCR.use_cassette('tasks/create', :record => :new_episodes) do
+          VCR.use_cassette('tasks/create/default', :record => :new_episodes) do
             tr_task = nil
             expect { tr_task = tr.tasks.create(valid_params) }.to_not raise_error
             tr_task.should be_instance_of(Taskrabbit::Task)
