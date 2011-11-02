@@ -3,7 +3,7 @@ module Taskrabbit
     class << self
       def find(api, id)
         raise Taskrabbit::Error.new("Couldn't find #{self} without an ID") if id.nil?
-        obj = new({:id => id}, api)
+        new({:id => id}, api)
       end
     end
 

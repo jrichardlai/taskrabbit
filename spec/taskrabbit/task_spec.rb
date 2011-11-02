@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe Taskrabbit::Task do
   describe "api endpoints" do
-    #tr.tasks wont do the request
-    #tr.tasks.first will do the request
-    #tr.tasks.all
-    #tr.tasks.anything will do the request exect if using find !
     describe "#tasks" do
       it "should fetch tasks only once" do
         tr = Taskrabbit::Api.new

@@ -51,6 +51,10 @@ module Taskrabbit
       @users ||= Proxy.new(self, User)
     end
 
+    def account
+      @account ||= Account.new({}, self)
+    end
+
     def tasks
       @tasks ||= Proxy.new(self, Task)
     end

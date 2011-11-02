@@ -2,6 +2,7 @@ module Taskrabbit
   autoload :Config,     "taskrabbit/config"
   autoload :Api,        "taskrabbit/api"
   autoload :Task,       "taskrabbit/task"
+  autoload :Account,    "taskrabbit/account"
   autoload :User,       "taskrabbit/user"
   autoload :Version,    "taskrabbit/version"
   autoload :Collection, "taskrabbit/collection"

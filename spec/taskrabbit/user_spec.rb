@@ -15,7 +15,6 @@ describe Taskrabbit::User do
       end
       
       describe "tasks" do
-        
         let(:tr) { tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret]) }
         
         it "should not do an extra query to users/#{TR_USERS[:with_card][:id]}" do
