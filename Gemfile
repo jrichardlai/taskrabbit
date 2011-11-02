@@ -7,6 +7,7 @@ group :development do
   gem 'rake'
   gem 'yard'
   gem 'ruby-debug'
+  gem 'pry'
   gem 'awesome_print'
 end
 
