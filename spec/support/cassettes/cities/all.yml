@@ -1,0 +1,32 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://localhost:3000/api/v1/cities?
+    body: 
+    headers: 
+      x-client-application: 
+      - euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn
+      authorization: 
+      - OAuth
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      etag: 
+      - "\"782fa6f09d049822e978ffcb3e147162\""
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "136"
+      server: 
+      - WEBrick/1.3.1 (Ruby/1.8.7/2010-04-19)
+      date: 
+      - Wed, 02 Nov 2011 22:54:01 GMT
+      content-length: 
+      - "692"
+      cache-control: 
+      - private, max-age=0, must-revalidate
+    body: "{\"items\":[{\"name\":\"Boston\",\"lng\":-71.059773,\"id\":1,\"links\":{\"get\":\"/api/v1/cities/1\"},\"lat\":42.358431},{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},{\"name\":\"New York City\",\"lng\":-74.005973,\"id\":4,\"links\":{\"get\":\"/api/v1/cities/4\"},\"lat\":40.714353},{\"name\":\"Chicago\",\"lng\":-87.629798,\"id\":5,\"links\":{\"get\":\"/api/v1/cities/5\"},\"lat\":41.878114},{\"name\":\"Los Angeles\",\"lng\":-118.243685,\"id\":6,\"links\":{\"get\":\"/api/v1/cities/6\"},\"lat\":34.052234},{\"name\":\"Orange County\",\"lng\":-117.8325,\"id\":40,\"links\":{\"get\":\"/api/v1/cities/40\"},\"lat\":33.803056}],\"links\":{\"get\":\"/api/v1/cities\",\"last\":\"/api/v1/cities?page=1\",\"first\":\"/api/v1/cities?page=1\"}}"
+    http_version: "1.1"

@@ -5,13 +5,10 @@ module Taskrabbit
     property :error
     
     alias :all :items
-    
-    def first
-      all.first
-    end
-    
-    def last
-      all.last
+    %w{first last count size length each}.each do |method|
+      define_method(method) do |*args, &block|
+        all.send(method, *args, &block)
+      end
     end
   end
 end

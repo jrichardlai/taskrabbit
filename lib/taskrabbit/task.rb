@@ -7,7 +7,7 @@ module Taskrabbit
     property :cost_in_cents
     property :links
     property :state_label
-    property :city
+    property :city, :transformer => City
     property :state
     property :complete_by_time, :transformer => TIME_TRANSFORMER
     property :state_changed_at, :transformer => TIME_TRANSFORMER

@@ -19,7 +19,7 @@ describe Taskrabbit::Task do
     its(:cost_in_cents) { should == 0 }
     its(:state) { should == 'closed' }
     its(:state_label) { should == 'closed' }
-    its(:city) { should be_instance_of(Hash) }
+    its(:city) { should be_instance_of(Taskrabbit::City) }
     its(:assign_by_time) { should be_instance_of(Time) }
     its(:complete_by_time) { should be_instance_of(Time) }
     its(:state_changed_at) { should be_instance_of(Time) }

@@ -5,6 +5,7 @@ module Taskrabbit
 
     has_many :users, User
     has_many :tasks, Task
+    has_many :cities, City
 
     attr_accessor :user_token
     attr_accessor *Config::VALID_OPTIONS_KEYS
