@@ -7,6 +7,7 @@ module Taskrabbit
   autoload :Collection, "taskrabbit/collection"
   autoload :Error,      "taskrabbit/error"
   autoload :Proxy,      "taskrabbit/proxy"
+  autoload :Smash,      "taskrabbit/smash"
 
   extend Config
 end

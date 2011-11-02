@@ -1,11 +1,17 @@
 module Taskrabbit
-  class Task < APISmith::Smash
+  class Task < Smash
     property :id
     property :name
 
     class << self
-      def all(api, options = {})
-        @found = api.request('get', 'tasks', Api::collection_transformers[self], options)
+      def all(scope, options = {})
+        path = case scope
+               when Api
+                 'tasks'
+               else
+                 "users/#{scope.id}/tasks"
+               end
+        @found = scope.request('get', path, Api::collection_transformers[self], options)
       end
 
       def find(api, id)

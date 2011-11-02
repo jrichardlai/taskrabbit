@@ -1,21 +1,15 @@
 module Taskrabbit
-  class User < APISmith::Smash
+  class User < Smash
     property :id
     property :short_name
     property :full_name
 
-    class << self
-      def find(api, id)
-        # if @found
-          # find from users tasks if loaded 
-          # @found.detect { |document| document.id == id }
-        # else
-          api.request('get', "users/#{id.to_s}", self)
-        # end
-      end
+    def fetch
+      api.request('get', "users/#{id.to_s}", self.class)
+    end
 
-      def account(api)
-      end
+    def tasks
+      @tasks ||= Proxy.new(self, Task)
     end
   end
 end

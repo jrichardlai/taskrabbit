@@ -9,6 +9,10 @@ Bundler.setup
 Bundler.require :default, :test
 
 CASSETTES_PATH = File.join(File.dirname(__FILE__), "support", "cassettes")
+TR_USERS = {
+  :with_card    => {:secret => 'RhyRtRg1bRNyqmdozkY6JJJ3eGDpoRGTm9AXUudp', :id => 49720},
+  :without_card => {:secret => 'sjCuNHsxMRkFiJGpLWZzYJksDjfnXtDvDcPuuDkn', :id => 49719},
+}
 
 module Taskrabbit
   module Config

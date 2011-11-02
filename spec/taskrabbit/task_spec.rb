@@ -12,6 +12,7 @@ describe Taskrabbit::Task do
         VCR.use_cassette('tasks/all', :record => :new_episodes) do
           tr_tasks = nil
           expect { tr_tasks = tr.tasks.all }.to_not raise_error
+          tr_tasks.should be_a(Taskrabbit::Collection)
           tr_tasks.first.should be_instance_of(Taskrabbit::Task)
         end
       end
@@ -50,7 +51,7 @@ describe Taskrabbit::Task do
         end
 
         it "should create the task if the user is authenticated but does not have a credit card" do
-          tr = Taskrabbit::Api.new('sjCuNHsxMRkFiJGpLWZzYJksDjfnXtDvDcPuuDkn')
+          tr = Taskrabbit::Api.new(TR_USERS[:without_card][:secret])
           VCR.use_cassette('tasks/create/without_credit_card', :record => :new_episodes) do
             tr_task = nil
             expect { tr_task = tr.tasks.create(valid_params) }.to_not raise_error
@@ -59,7 +60,7 @@ describe Taskrabbit::Task do
         end
 
         it "should create the task if the user is authenticated and has a credit card" do
-          tr = Taskrabbit::Api.new('cNPyB6KypcdDjFb8KhQ7EOZzBpwcenMMvnQBbSHM')
+          tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
           VCR.use_cassette('tasks/create/default', :record => :new_episodes) do
             tr_task = nil
             expect { tr_task = tr.tasks.create(valid_params) }.to_not raise_error
@@ -73,7 +74,7 @@ describe Taskrabbit::Task do
         let(:invalid_params) { {} }
 
         it "should create the task if the user is authenticated and has a credit card" do
-          tr = Taskrabbit::Api.new('cNPyB6KypcdDjFb8KhQ7EOZzBpwcenMMvnQBbSHM')
+          tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
           VCR.use_cassette('tasks/create/with_invalid_params', :record => :new_episodes) do
             tr_task = nil
             expect { tr_task = tr.tasks.create(invalid_params) }.to
