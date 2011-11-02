@@ -19,13 +19,19 @@ module Taskrabbit
     def request(*args)
       api.request *args
     end
-
-    # load the object if trying to access a property
+    
+    def load
+      self.loaded = true
+      instance = fetch
+      self.merge!(instance.to_hash)
+    end
+    
     def [](property)
+      value = nil
+      return value unless (value = super(property)).nil?
       if api and !loaded
-        self.loaded = true
-        instance = fetch
-        self.merge!(instance.to_hash)
+        # load the object if trying to access a property
+        load
       end
       super(property)
     end

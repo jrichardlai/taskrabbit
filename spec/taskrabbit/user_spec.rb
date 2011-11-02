@@ -15,8 +15,15 @@ describe Taskrabbit::User do
       end
       
       describe "tasks" do
+        
+        let(:tr) { tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret]) }
+        
+        it "should not do an extra query to users/#{TR_USERS[:with_card][:id]}" do
+          Taskrabbit::Api.should_not_receive(:get).with("/api/v1/users/#{TR_USERS[:with_card][:id]}", anything).never
+          tr.users.find(TR_USERS[:with_card][:id]).tasks.all
+        end
+
         it "should fetch tasks with users/#{TR_USERS[:with_card][:id]}/tasks" do
-          tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
           VCR.use_cassette('users/tasks/all', :record => :new_episodes) do
             tr_tasks = nil
             expect { tr_tasks = tr.users.find(TR_USERS[:with_card][:id]).tasks.all }.to_not raise_error
