@@ -1,14 +1,15 @@
 module Taskrabbit
   class Smash < APISmith::Smash
+    include Transformer
+    attr_accessor :api
+    attr_accessor :loaded
+
     class << self
       def find(api, id)
         raise Taskrabbit::Error.new("Couldn't find #{self} without an ID") if id.nil?
         new({:id => id}, api)
       end
     end
-
-    attr_accessor :api
-    attr_accessor :loaded
 
     def initialize(options = {}, api = nil)
       self.api    = api

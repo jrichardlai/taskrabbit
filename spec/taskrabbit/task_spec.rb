@@ -1,6 +1,30 @@
 require 'spec_helper'
 
 describe Taskrabbit::Task do
+  
+  describe "task properties" do
+    subject do
+      tr = Taskrabbit::Api.new
+      tr_task = nil
+      VCR.use_cassette('tasks/find', :record => :new_episodes) do
+        tr_task = tr.tasks.find(22545)
+      end
+      tr_task
+    end
+    
+    its(:id) { should == 22545 }
+    its(:name) { should == "2 Hours of House Cleaning + 1 Hour of House Chores" }
+    its(:user) { should be_instance_of(Taskrabbit::User) }
+    its(:runner) { should be_instance_of(Taskrabbit::User) }
+    its(:cost_in_cents) { should == 0 }
+    its(:state) { should == 'closed' }
+    its(:state_label) { should == 'closed' }
+    its(:city) { should be_instance_of(Hash) }
+    its(:assign_by_time) { should be_instance_of(Time) }
+    its(:complete_by_time) { should be_instance_of(Time) }
+    its(:state_changed_at) { should be_instance_of(Time) }
+  end
+  
   describe "api endpoints" do
     describe "#tasks" do
       it "should fetch tasks only once" do

@@ -2,6 +2,16 @@ module Taskrabbit
   class Task < Smash
     property :id
     property :name
+    property :user, :transformer => User
+    property :runner, :transformer => User
+    property :cost_in_cents
+    property :links
+    property :state_label
+    property :city
+    property :state
+    property :complete_by_time, :transformer => TIME_TRANSFORMER
+    property :state_changed_at, :transformer => TIME_TRANSFORMER
+    property :assign_by_time, :transformer => TIME_TRANSFORMER
 
     class << self
       def all(scope, options = {})
