@@ -24,4 +24,11 @@ describe Taskrabbit::Api do
     end
     Taskrabbit.client_secret = secret
   end
+
+  it "should return an error if the client is not set" do
+    tr = Taskrabbit::Api.new
+    VCR.use_cassette('errors/404', :record => :new_episodes) do
+      expect { tr.tasks.find('something-that-doesnot-exists') }.to raise_error(Taskrabbit::Error, '404 Not Found')
+    end
+  end
 end

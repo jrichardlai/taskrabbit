@@ -42,8 +42,15 @@ module Taskrabbit
     end
 
     def check_response_errors(response)
-      if response.is_a?(Hash) and (error = response['error'])
-        raise Taskrabbit::Error.new(error)
+      if response and response.respond_to?(:response)
+        case response.response
+        when Net::HTTPClientError, Net::HTTPServerError
+          error = "#{response.response.code} #{response.response.message}"
+          if response.is_a?(Hash)
+            error = response['error']
+          end
+          raise Taskrabbit::Error.new(error)
+        end
       end
     end
 
