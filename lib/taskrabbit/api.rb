@@ -1,6 +1,10 @@
 module Taskrabbit
   class Api
     include APISmith::Client
+    extend Association
+
+    has_many :users, User
+    has_many :tasks, Task
 
     attr_accessor :user_token
     attr_accessor *Config::VALID_OPTIONS_KEYS
@@ -47,16 +51,9 @@ module Taskrabbit
       send(method, path, request_params(transformer, options))
     end
 
-    def users
-      @users ||= Proxy.new(self, User)
-    end
-
     def account
       @account ||= Account.new({}, self)
     end
 
-    def tasks
-      @tasks ||= Proxy.new(self, Task)
-    end
   end
 end

@@ -1,4 +1,5 @@
 module Taskrabbit
+  autoload :Association, "taskrabbit/association"
   autoload :Config,      "taskrabbit/config"
   autoload :Api,         "taskrabbit/api"
   autoload :Task,        "taskrabbit/task"
