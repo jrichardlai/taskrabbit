@@ -7,13 +7,25 @@ describe Taskrabbit::Task do
     #tr.tasks.all
     #tr.tasks.anything will do the request exect if using find !
     describe "#tasks" do
-      it "should fetch tasks" do
+      it "should fetch tasks only once" do
         tr = Taskrabbit::Api.new
         VCR.use_cassette('tasks/all', :record => :new_episodes) do
           tr_tasks = nil
-          expect { tr_tasks = tr.tasks.all }.to_not raise_error
-          tr_tasks.should be_a(Taskrabbit::Collection)
+          expect { tr_tasks = tr.tasks }.to_not raise_error
           tr_tasks.first.should be_instance_of(Taskrabbit::Task)
+          Taskrabbit::Api.should_not_receive(:get).with("/api/v1/tasks", anything).never
+          tr_tasks.last.should be_instance_of(Taskrabbit::Task)
+        end
+      end
+
+      it "should refetch tasks if passed :reload => true" do
+        tr = Taskrabbit::Api.new
+        VCR.use_cassette('tasks/all', :record => :new_episodes) do
+          tr_tasks = nil
+          expect { tr_tasks = tr.tasks }.to_not raise_error
+          tr_tasks.first.should be_instance_of(Taskrabbit::Task)
+          Taskrabbit::Api.should_receive(:get).with("/api/v1/tasks", anything).once.and_return []
+          tr_tasks.last(:reload => true)
         end
       end
     end

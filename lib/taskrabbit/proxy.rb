@@ -11,14 +11,23 @@ module Taskrabbit
       @opts   = nil
     end
 
-    def all(options={})
-      proxy_found(options)
+    def all(options = {})
+      return @all if @all and !options.delete(:reload)
+      @all = proxy_found(options)
     end
 
     def find(param, options={})
       return all(options) if param == :all
       return @target.find(@api, param) if @target.respond_to?(:find)
       # return proxy_found(options).detect { |document| document.id == param }
+    end
+
+    def first(options = {})
+      all(options).first
+    end
+    
+    def last(options = {})
+      all(options).last
     end
 
     # def <<(*objects)
