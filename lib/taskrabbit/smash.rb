@@ -1,9 +1,9 @@
 module Taskrabbit
   class Smash < APISmith::Smash
-
     class << self
       def find(api, id)
-        new({:id => id}, api)
+        raise Taskrabbit::Error.new("Couldn't find #{self} without an ID") if id.nil?
+        obj = new({:id => id}, api)
       end
     end
 
