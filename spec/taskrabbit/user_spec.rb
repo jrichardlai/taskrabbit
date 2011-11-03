@@ -22,7 +22,7 @@ describe Taskrabbit::User do
     its(:tasks) { should == Taskrabbit::Task }
     its(:city) { should be_instance_of(Taskrabbit::City) }
     its(:zip_code) { should == "64321" }
-    its(:locations) { should be_nil }
+    its(:locations) { should == Taskrabbit::Location }
     its(:links) { should be_instance_of(Hash) }
   end
 

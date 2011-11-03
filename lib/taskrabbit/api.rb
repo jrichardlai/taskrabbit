@@ -1,11 +1,7 @@
 module Taskrabbit
   class Api
     include APISmith::Client
-    extend Association
-
-    has_many :users, User
-    has_many :tasks, Task
-    has_many :cities, City
+    include Association
 
     attr_accessor :user_token
     attr_accessor *Config::VALID_OPTIONS_KEYS
@@ -17,6 +13,10 @@ module Taskrabbit
         end
       end
     end
+
+    has_many :users, User
+    has_many :tasks, Task
+    has_many :cities, City
 
     def initialize(user_token = nil, attrs = {})
       attrs = Taskrabbit.options.merge(attrs)

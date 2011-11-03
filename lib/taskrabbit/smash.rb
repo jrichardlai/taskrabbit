@@ -1,7 +1,7 @@
 module Taskrabbit
   class Smash < APISmith::Smash
     include Transformer
-    extend Association
+    include Association
     attr_accessor :api
     attr_accessor :loaded
 

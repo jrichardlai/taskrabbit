@@ -12,6 +12,7 @@ module Taskrabbit
     property :complete_by_time, :transformer => TIME_TRANSFORMER
     property :state_changed_at, :transformer => TIME_TRANSFORMER
     property :assign_by_time, :transformer => TIME_TRANSFORMER
+    property :locations, :transformer => Api::collection_transformers[Location]
 
     class << self
       def all(scope, options = {})
