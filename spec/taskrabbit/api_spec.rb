@@ -28,7 +28,7 @@ describe Taskrabbit::Api do
   it "should return an error if the client is not set" do
     tr = Taskrabbit::Api.new
     VCR.use_cassette('errors/404', :record => :new_episodes) do
-      expect { tr.tasks.find('something-that-doesnot-exists') }.to raise_error(Taskrabbit::Error, '404 Not Found')
+      expect { tr.tasks.find('something-that-doesnot-exists').name }.to raise_error(Taskrabbit::Error, '404 Not Found')
     end
   end
 end

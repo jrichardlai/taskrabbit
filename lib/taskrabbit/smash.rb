@@ -24,8 +24,7 @@ module Taskrabbit
     
     def load
       self.loaded = true
-      instance = fetch
-      self.merge!(instance.to_hash)
+      self.merge!(fetch)
     end
     
     def [](property)

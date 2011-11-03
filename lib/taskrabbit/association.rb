@@ -4,7 +4,7 @@ module Taskrabbit
       class_eval <<-"END"
       def #{association}
         @#{association} ||= Proxy.new(self, #{klass})
-      end  
+      end
       END
     end
   end

@@ -1,6 +1,31 @@
 require 'spec_helper'
 
 describe Taskrabbit::User do
+
+  describe "user properties" do
+
+    before :all do
+      tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
+      VCR.use_cassette('users/properties', :record => :new_episodes) do
+        @user = tr.users.find(TR_USERS[:with_card][:id])
+        @user.load
+      end
+    end
+
+    subject { @user }
+
+    its(:id) { should == TR_USERS[:with_card][:id] }
+    its(:short_name) { should == "Bob" }
+    its(:first_name) { should == "Bob" }
+    its(:full_name) { should == "Bob Sponge" }
+    its(:display_name) { should == "Bob S." }
+    its(:tasks) { should == Taskrabbit::Task }
+    its(:city) { should be_instance_of(Taskrabbit::City) }
+    its(:zip_code) { should == "64321" }
+    its(:locations) { should be_nil }
+    its(:links) { should be_instance_of(Hash) }
+  end
+
   describe "api endpoints" do
     describe "#find" do
       it "should fetch users" do

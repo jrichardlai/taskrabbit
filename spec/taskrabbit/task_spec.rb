@@ -3,15 +3,17 @@ require 'spec_helper'
 describe Taskrabbit::Task do
   
   describe "task properties" do
-    subject do
+
+    before :all do
       tr = Taskrabbit::Api.new
-      tr_task = nil
-      VCR.use_cassette('tasks/find', :record => :new_episodes) do
-        tr_task = tr.tasks.find(22545)
+      VCR.use_cassette('tasks/properties', :record => :new_episodes) do
+        @tr_task = tr.tasks.find(22545)
+        @tr_task.load
       end
-      tr_task
     end
-    
+
+    subject { @tr_task }
+
     its(:id) { should == 22545 }
     its(:name) { should == "2 Hours of House Cleaning + 1 Hour of House Chores" }
     its(:user) { should be_instance_of(Taskrabbit::User) }
