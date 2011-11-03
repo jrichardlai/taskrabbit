@@ -1,6 +1,26 @@
 require 'spec_helper'
 
 describe Taskrabbit::City do
+
+  describe "city properties" do
+
+    before :all do
+      tr = Taskrabbit::Api.new
+      VCR.use_cassette('cities/properties', :record => :new_episodes) do
+        @city = tr.cities.find(3)
+        @city.load
+      end
+    end
+
+    subject { @city }
+
+    its(:id) { should == 3 }
+    its(:name) { should == "SF Bay Area" }
+    its(:lat) { should be_instance_of(Float) }
+    its(:lng) { should be_instance_of(Float) }
+    its(:links) { should be_instance_of(Hash) }
+  end
+
   describe "api endpoints" do
     describe "#all" do
       it "should fetch all cities" do
