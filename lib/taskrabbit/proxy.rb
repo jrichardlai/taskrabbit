@@ -5,6 +5,8 @@ end unless defined?(BasicObject)
 module Taskrabbit
   class Proxy < BasicObject
 
+    COLLECTION_DELEGATE = %w{first last count size length each keys links}.freeze
+
     def initialize(api, target)
       @api    = api
       @target = target
@@ -23,35 +25,16 @@ module Taskrabbit
     def find(param, options={})
       return all(options) if param == :all
       return @target.find(@api, param) if @target.respond_to?(:find)
-      # return proxy_found(options).detect { |document| document.id == param }
     end
 
-    def first(options = {})
-      all(options).first
+    COLLECTION_DELEGATE.each do |method|
+      define_method(method) do |*args, &block|
+        all(args.pop || {}).send(method, *args, &block)
+      end
     end
-    
-    def last(options = {})
-      all(options).last
-    end
-
-    # def <<(*objects)
-    #   objects.flatten.each do |object|
-    #     if obj = object.create
-    #       return obj
-    #     else
-    #       return object
-    #     end
-    #   end
-    # end
 
     def create(args)
       @target.create(@api, args) if @target.respond_to?(:create)
-      # object = @target.new(args.merge({:api => @api}))
-      # if obj = object.create
-      #   return obj
-      # else
-      #   return object
-      # end
     end
 
     protected

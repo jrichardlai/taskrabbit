@@ -27,10 +27,11 @@ describe Taskrabbit::City do
         tr = Taskrabbit::Api.new
         VCR.use_cassette('cities/all', :record => :new_episodes) do
           cities = nil
-          expect { cities = tr.cities.all }.to_not raise_error
-          cities.should be_a(Taskrabbit::Collection)
+          expect { cities = tr.cities }.to_not raise_error
+          cities.should == Taskrabbit::City
           cities.count.should == 6
           cities.keys.should  == ["items", "links"]
+          cities.links
           cities.each do |city|
             city.should be_instance_of Taskrabbit::City
           end

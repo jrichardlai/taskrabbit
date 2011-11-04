@@ -2,11 +2,12 @@ module Taskrabbit
   class Collection < APISmith::Smash
     property :items
     property :links
-    
-    alias :all :items
-    %w{first last count size length each}.each do |method|
+
+    ARRAY_METHODS = %w{first last count size length each}.freeze
+
+    ARRAY_METHODS.each do |method|
       define_method(method) do |*args, &block|
-        all.send(method, *args, &block)
+        items.send(method, *args, &block)
       end
     end
   end
