@@ -15,6 +15,10 @@ module Taskrabbit
       return @all if @all and !options.delete(:reload)
       @all = proxy_found(options)
     end
+    
+    def new(options = {})
+      @target.new(options, @api)
+    end
 
     def find(param, options={})
       return all(options) if param == :all

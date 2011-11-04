@@ -4,9 +4,11 @@ module Taskrabbit
     property :name
     property :user, :transformer => User
     property :runner, :transformer => User
+    property :named_price
     property :cost_in_cents
     property :links
     property :state_label
+    property :city_id
     property :city, :transformer => City
     property :state
     property :complete_by_time, :transformer => TIME_TRANSFORMER
@@ -31,7 +33,19 @@ module Taskrabbit
     end
     
     def fetch
-      api.request('get', "tasks/#{id.to_s}", self.class)
+      reload('get', "tasks/#{id.to_s}")
+    end
+
+    def save
+      if id.nil?
+        reload('post', "tasks", :task => self.to_hash)
+      else
+        reload('put', "tasks/#{id.to_s}", self.to_hash)
+      end
+    end
+
+    def delete!
+      reload('delete', "tasks/#{id.to_s}")
     end
   end
 end

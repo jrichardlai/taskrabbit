@@ -1,0 +1,94 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://localhost:3000/api/v1/tasks/?
+    body: 
+    headers: 
+      x-client-application: 
+      - euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn
+      authorization: 
+      - OAuth RhyRtRg1bRNyqmdozkY6JJJ3eGDpoRGTm9AXUudp
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      etag: 
+      - "\"f48a638c77769ca6f0df98193515ff65\""
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "3825"
+      server: 
+      - WEBrick/1.3.1 (Ruby/1.8.7/2010-04-19)
+      date: 
+      - Fri, 04 Nov 2011 21:43:42 GMT
+      content-length: 
+      - "7786"
+      cache-control: 
+      - private, max-age=0, must-revalidate
+    body: "{\"items\":[{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"name\":\"Ikea mounting\",\"named_price\":21,\"complete_by_time\":1320260400,\"cost_in_cents\":2500,\"state_changed_at\":1320201220,\"id\":22562,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/ikea-mounting\",\"get\":\"/api/v1/tasks/22562\",\"delete\":\"/api/v1/tasks/22562\",\"put\":\"/api/v1/tasks/22562\",\"authenticated\":\"http://local.taskrabbit.com/go/c87272e78f30202b24f538d0ea9fe70a4fecb1261bb7670097efa5deea793496d4825df9a4117acc56cfe3f1c59ac287e3d7\"},\"state_label\":\"posted\",\"description\":\"I need someone to mount a little desk\",\"assign_by_time\":1320246000,\"state\":\"opened\"},{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"name\":\"2 Hours of House Cleaning + 1 Hour of House Chores\",\"complete_by_time\":1318381200,\"runner\":{\"city\":{\"name\":\"Boston\",\"lng\":-71.059773,\"id\":1,\"links\":{\"get\":\"/api/v1/cities/1\"},\"lat\":42.358431},\"id\":66,\"links\":{\"get\":\"/api/v1/users/66\",\"avatar_url\":\"http://s3.amazonaws.com/taskrabbit-dev/avatars/66/thumb/jordan.png?1276495549\"},\"full_name\":\"Jordan H.\",\"short_name\":\"Jordan\",\"display_name\":\"Jordan H.\"},\"cost_in_cents\":0,\"state_changed_at\":1317839370,\"id\":22545,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/task--278\",\"get\":\"/api/v1/tasks/22545\"},\"state_label\":\"closed\",\"user\":{\"city\":{\"name\":\"Boston\",\"lng\":-71.059773,\"id\":1,\"links\":{\"get\":\"/api/v1/cities/1\"},\"lat\":42.358431},\"id\":49658,\"links\":{\"get\":\"/api/v1/users/49658\",\"avatar_url\":\"http://local.taskrabbit.com/images/default_avatars/runner_thumb.gif\"},\"full_name\":\"Jean-Richard L.\",\"short_name\":\"Jean-Richard\",\"display_name\":\"Jean-Richard L.\"},\"assign_by_time\":1318014000,\"state\":\"closed\"},{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"name\":\"reewr\",\"complete_by_time\":1317870000,\"cost_in_cents\":0,\"state_changed_at\":1317837057,\"id\":22542,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/reewr\",\"get\":\"/api/v1/tasks/22542\"},\"state_label\":\"posted\",\"description\":\"rewrewewwerew\",\"user\":{\"city\":{\"name\":\"Boston\",\"lng\":-71.059773,\"id\":1,\"links\":{\"get\":\"/api/v1/cities/1\"},\"lat\":42.358431},\"id\":49658,\"links\":{\"get\":\"/api/v1/users/49658\",\"avatar_url\":\"http://local.taskrabbit.com/images/default_avatars/runner_thumb.gif\"},\"full_name\":\"Jean-Richard L.\",\"short_name\":\"Jean-Richard\",\"display_name\":\"Jean-Richard L.\"},\"assign_by_time\":1317855600,\"state\":\"opened\"},{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"name\":\"TaskRabbit\",\"complete_by_time\":1317146400,\"cost_in_cents\":0,\"state_changed_at\":1317073958,\"id\":22541,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/taskrabbit\",\"get\":\"/api/v1/tasks/22541\"},\"state_label\":\"posted\",\"user\":{\"city\":{\"name\":\"Boston\",\"lng\":-71.059773,\"id\":1,\"links\":{\"get\":\"/api/v1/cities/1\"},\"lat\":42.358431},\"id\":49658,\"links\":{\"get\":\"/api/v1/users/49658\",\"avatar_url\":\"http://local.taskrabbit.com/images/default_avatars/runner_thumb.gif\"},\"full_name\":\"Jean-Richard L.\",\"short_name\":\"Jean-Richard\",\"display_name\":\"Jean-Richard L.\"},\"assign_by_time\":1317092400,\"state\":\"opened\"},{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"name\":\"rewreunrew\",\"complete_by_time\":1316887200,\"cost_in_cents\":0,\"state_changed_at\":1316812803,\"id\":22540,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/rewreunrew\",\"get\":\"/api/v1/tasks/22540\"},\"state_label\":\"posted\",\"description\":\"ewewr\",\"user\":{\"city\":{\"name\":\"Boston\",\"lng\":-71.059773,\"id\":1,\"links\":{\"get\":\"/api/v1/cities/1\"},\"lat\":42.358431},\"id\":49658,\"links\":{\"get\":\"/api/v1/users/49658\",\"avatar_url\":\"http://local.taskrabbit.com/images/default_avatars/runner_thumb.gif\"},\"full_name\":\"Jean-Richard L.\",\"short_name\":\"Jean-Richard\",\"display_name\":\"Jean-Richard L.\"},\"assign_by_time\":1316833200,\"state\":\"opened\"},{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"name\":\"rewopimrwepowernm\",\"complete_by_time\":1316545200,\"cost_in_cents\":0,\"state_changed_at\":1316480482,\"id\":22535,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/rewopimrwepowernm\",\"get\":\"/api/v1/tasks/22535\"},\"state_label\":\"posted\",\"description\":\"ewiornewioprnew\",\"user\":{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"id\":49687,\"links\":{\"get\":\"/api/v1/users/49687\",\"avatar_url\":\"http://local.taskrabbit.com/images/default_avatars/poster_thumb.gif\"},\"full_name\":\"ewornreinroi r.\",\"short_name\":\"ewornreinroi\",\"display_name\":\"ewornreinroi r.\"},\"assign_by_time\":1316530800,\"state\":\"opened\"},{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"name\":\"ewqewqqweno\",\"complete_by_time\":1316023200,\"cost_in_cents\":0,\"state_changed_at\":1315953423,\"id\":22533,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/ewqewqqweno\",\"get\":\"/api/v1/tasks/22533\"},\"state_label\":\"posted\",\"description\":\"rewiornwiorewn\",\"user\":{\"city\":{\"name\":\"Boston\",\"lng\":-71.059773,\"id\":1,\"links\":{\"get\":\"/api/v1/cities/1\"},\"lat\":42.358431},\"id\":49658,\"links\":{\"get\":\"/api/v1/users/49658\",\"avatar_url\":\"http://local.taskrabbit.com/images/default_avatars/runner_thumb.gif\"},\"full_name\":\"Jean-Richard L.\",\"short_name\":\"Jean-Richard\",\"display_name\":\"Jean-Richard L.\"},\"assign_by_time\":1315972800,\"state\":\"opened\"},{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"name\":\"erewoirrnewin\",\"complete_by_time\":1316023200,\"cost_in_cents\":0,\"state_changed_at\":1315953018,\"id\":22532,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/erewoirrnewin\",\"get\":\"/api/v1/tasks/22532\"},\"state_label\":\"posted\",\"description\":\"weroiwenroewinrwo\",\"user\":{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"id\":49675,\"links\":{\"get\":\"/api/v1/users/49675\",\"avatar_url\":\"http://local.taskrabbit.com/images/default_avatars/poster_thumb.gif\"},\"full_name\":\"weqw q.\",\"short_name\":\"weqw\",\"display_name\":\"weqw q.\"},\"assign_by_time\":1315972800,\"state\":\"opened\"},{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"name\":\"ewrwerewr\",\"complete_by_time\":1316023200,\"cost_in_cents\":0,\"state_changed_at\":1315951634,\"id\":22531,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/ewrwerewr\",\"get\":\"/api/v1/tasks/22531\"},\"state_label\":\"posted\",\"description\":\"werewrewr\\r\\nrew\\r\\nrew\\r\\nrew\",\"user\":{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"id\":49674,\"links\":{\"get\":\"/api/v1/users/49674\",\"avatar_url\":\"http://local.taskrabbit.com/images/default_avatars/poster_thumb.gif\"},\"full_name\":\"rewmrepoemwprowm w.\",\"short_name\":\"rewmrepoemwprowm\",\"display_name\":\"rewmrepoemwprowm w.\"},\"assign_by_time\":1315972800,\"state\":\"opened\"},{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"name\":\"rewrewrw\",\"complete_by_time\":1316023200,\"cost_in_cents\":0,\"state_changed_at\":1315951316,\"id\":22530,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/rewrewrw\",\"get\":\"/api/v1/tasks/22530\"},\"state_label\":\"posted\",\"description\":\"rewrewrewrewrew\",\"user\":{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"id\":49674,\"links\":{\"get\":\"/api/v1/users/49674\",\"avatar_url\":\"http://local.taskrabbit.com/images/default_avatars/poster_thumb.gif\"},\"full_name\":\"rewmrepoemwprowm w.\",\"short_name\":\"rewmrepoemwprowm\",\"display_name\":\"rewmrepoemwprowm w.\"},\"assign_by_time\":1315969200,\"state\":\"opened\"}],\"links\":{\"get\":\"/api/v1/tasks\",\"last\":\"/api/v1/tasks?page=484\",\"first\":\"/api/v1/tasks?page=1\",\"next\":\"/api/v1/tasks?page=2\"}}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://localhost:3000/api/v1/tasks?
+    body: task[name]=My%20First%20Task&task[named_price]=20&task[city_id]=4&task[links][get]=%2Fapi%2Fv1%2Ftasks&task[links][last]=%2Fapi%2Fv1%2Ftasks%3Fpage%3D484&task[links][first]=%2Fapi%2Fv1%2Ftasks%3Fpage%3D1&task[links][next]=%2Fapi%2Fv1%2Ftasks%3Fpage%3D2
+    headers: 
+      x-client-application: 
+      - euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn
+      authorization: 
+      - OAuth RhyRtRg1bRNyqmdozkY6JJJ3eGDpoRGTm9AXUudp
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      etag: 
+      - "\"edc8a069fe147f7568d9f4dadef958ce\""
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "3232"
+      server: 
+      - WEBrick/1.3.1 (Ruby/1.8.7/2010-04-19)
+      date: 
+      - Fri, 04 Nov 2011 21:43:46 GMT
+      content-length: 
+      - "613"
+      cache-control: 
+      - private, max-age=0, must-revalidate
+    body: "{\"name\":\"My First Task\",\"city\":{\"name\":\"New York City\",\"lng\":-74.005973,\"id\":4,\"links\":{\"get\":\"/api/v1/cities/4\"},\"lat\":40.714353},\"named_price\":20,\"complete_by_time\":1320519600,\"id\":22576,\"state_changed_at\":1320443025,\"cost_in_cents\":0,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/my-first-task--29\",\"get\":\"/api/v1/tasks/22576\",\"delete\":\"/api/v1/tasks/22576\",\"put\":\"/api/v1/tasks/22576\",\"authenticated\":\"http://local.taskrabbit.com/go/1c6811a59f956a172c20d735d30708a0e794bbd1671d9d194e46afe3685a0edc2c3e1a858c596db1216aaef278566900b59a\"},\"state_label\":\"posted\",\"assign_by_time\":1320505200,\"state\":\"opened\"}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://localhost:3000/api/v1/tasks/22576?
+    body: 
+    headers: 
+      x-client-application: 
+      - euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn
+      authorization: 
+      - OAuth RhyRtRg1bRNyqmdozkY6JJJ3eGDpoRGTm9AXUudp
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      etag: 
+      - "\"edc8a069fe147f7568d9f4dadef958ce\""
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "1589"
+      server: 
+      - WEBrick/1.3.1 (Ruby/1.8.7/2010-04-19)
+      date: 
+      - Fri, 04 Nov 2011 21:43:48 GMT
+      content-length: 
+      - "613"
+      cache-control: 
+      - private, max-age=0, must-revalidate
+    body: "{\"name\":\"My First Task\",\"city\":{\"name\":\"New York City\",\"lng\":-74.005973,\"id\":4,\"links\":{\"get\":\"/api/v1/cities/4\"},\"lat\":40.714353},\"named_price\":20,\"complete_by_time\":1320519600,\"id\":22576,\"state_changed_at\":1320443025,\"cost_in_cents\":0,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/my-first-task--29\",\"get\":\"/api/v1/tasks/22576\",\"delete\":\"/api/v1/tasks/22576\",\"put\":\"/api/v1/tasks/22576\",\"authenticated\":\"http://local.taskrabbit.com/go/1c6811a59f956a172c20d735d30708a0e794bbd1671d9d194e46afe3685a0edc2c3e1a858c596db1216aaef278566900b59a\"},\"state_label\":\"posted\",\"assign_by_time\":1320505200,\"state\":\"opened\"}"
+    http_version: "1.1"
