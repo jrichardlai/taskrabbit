@@ -4,12 +4,18 @@ module Taskrabbit
     include Association
     attr_accessor :api
     attr_accessor :loaded
-
+    
+    property :errors
+    property :error
+    
     class << self
       def find(api, id)
         raise Taskrabbit::Error.new("Couldn't find #{self} without an ID") if id.nil?
         new({:id => id}, api)
       end
+    end
+
+    class Error < Taskrabbit::Error
     end
 
     def initialize(options = {}, api = nil)
