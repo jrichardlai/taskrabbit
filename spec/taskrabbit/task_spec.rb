@@ -8,7 +8,7 @@ describe Taskrabbit::Task do
       tr = Taskrabbit::Api.new
       VCR.use_cassette('tasks/properties', :record => :new_episodes) do
         @tr_task = tr.tasks.find(22545)
-        @tr_task.load
+        @tr_task.fetch
       end
     end
 

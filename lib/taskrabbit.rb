@@ -1,4 +1,5 @@
 module Taskrabbit
+  autoload :Client,      "taskrabbit/client"
   autoload :Association, "taskrabbit/association"
   autoload :Config,      "taskrabbit/config"
   autoload :Version,     "taskrabbit/version"

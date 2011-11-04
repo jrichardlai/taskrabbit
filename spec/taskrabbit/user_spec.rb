@@ -8,7 +8,7 @@ describe Taskrabbit::User do
       tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
       VCR.use_cassette('users/properties', :record => :new_episodes) do
         @user = tr.users.find(TR_USERS[:with_card][:id])
-        @user.load
+        @user.fetch
       end
     end
 

@@ -1,7 +1,7 @@
 module Taskrabbit
   class Account < User
     def fetch
-      api.request('get', "account", self.class)
+      reload('get', "account")
     end
   end
 end

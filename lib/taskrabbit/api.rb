@@ -1,6 +1,6 @@
 module Taskrabbit
   class Api
-    include APISmith::Client
+    include Client
     include Association
 
     attr_accessor :user_token
@@ -17,6 +17,10 @@ module Taskrabbit
     has_many :users, User
     has_many :tasks, Task
     has_many :cities, City
+
+    def account
+      @account ||= Account.new({}, self)
+    end
 
     def initialize(user_token = nil, attrs = {})
       attrs = Taskrabbit.options.merge(attrs)
@@ -42,25 +46,8 @@ module Taskrabbit
       }
     end
 
-    def check_response_errors(response)
-      if response and response.respond_to?(:response)
-        case response.response
-        when Net::HTTPClientError, Net::HTTPServerError
-          error = "#{response.response.code} #{response.response.message}"
-          if response.is_a?(Hash)
-            error = response['error']
-          end
-          raise Taskrabbit::Error.new(error)
-        end
-      end
-    end
-
     def request(method, path, transformer, options = {})
       send(method, path, request_params(transformer, options))
-    end
-
-    def account
-      @account ||= Account.new({}, self)
     end
 
   end

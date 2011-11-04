@@ -8,7 +8,7 @@ describe Taskrabbit::City do
       tr = Taskrabbit::Api.new
       VCR.use_cassette('cities/properties', :record => :new_episodes) do
         @city = tr.cities.find(3)
-        @city.load
+        @city.fetch
       end
     end
 

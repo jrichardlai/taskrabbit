@@ -12,7 +12,7 @@ module Taskrabbit
     property :links
 
     def fetch
-      api.request('get', "users/#{id.to_s}", self.class)
+      reload('get', "users/#{id.to_s}")
     end
     
     has_many :tasks, Task
