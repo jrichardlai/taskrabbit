@@ -2,7 +2,6 @@ module Taskrabbit
   class Collection < APISmith::Smash
     property :items
     property :links
-    property :error
     
     alias :all :items
     %w{first last count size length each}.each do |method|
