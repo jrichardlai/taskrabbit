@@ -10,11 +10,16 @@ module Taskrabbit
     property :state_label
     property :city_id
     property :city, :transformer => City
+    property :description
+    property :virtual
     property :state
     property :complete_by_time, :transformer => TIME_TRANSFORMER
     property :state_changed_at, :transformer => TIME_TRANSFORMER
     property :assign_by_time, :transformer => TIME_TRANSFORMER
-    property :locations, :transformer => Api::collection_transformers[Location]
+    property :location_visits, :transformer => Api::collection_transformers[Location]
+    property :other_locations_attributes
+    property :uploaded_photos_attributes
+    property :uploaded_sounds_attributes
 
     class << self
       def all(scope, options = {})

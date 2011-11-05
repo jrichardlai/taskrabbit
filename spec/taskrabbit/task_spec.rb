@@ -19,8 +19,10 @@ describe Taskrabbit::Task do
     its(:user) { should be_instance_of(Taskrabbit::User) }
     its(:runner) { should be_instance_of(Taskrabbit::User) }
     its(:cost_in_cents) { should == 0 }
+    its(:description) { should }
     its(:state) { should == 'closed' }
     its(:state_label) { should == 'closed' }
+    its(:location_visits) { should be_nil }
     its(:city) { should be_instance_of(Taskrabbit::City) }
     its(:assign_by_time) { should be_instance_of(Time) }
     its(:complete_by_time) { should be_instance_of(Time) }
@@ -168,6 +170,33 @@ describe Taskrabbit::Task do
                                            "Amount you are willing to pay needs to be a whole dollar amount greater than zero")
             tr_task.should be_nil
           end
+        end
+      end
+      
+      it "should post locations" do
+        pending
+        tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
+        VCR.use_cassette('tasks/create/with_location', :record => :new_episodes) do
+          tr_task = nil
+          params_with_locations = valid_params.merge({:other_locations_attributes => [
+            {
+              "name" => "Home",
+              "address" => "123 Main St",
+              "city" => "Boston",
+              "state" => "MA",
+              "zip" => "02154",
+              "lat" => "42.358432",
+              "lng" => "-71.059774"
+            }, 
+            {
+              "name" => "Middle of the park",
+              "lat" => "42.358430",
+              "lng" => "-71.059772"
+            }
+          ]})
+          expect { tr_task = tr.tasks.create(params_with_locations) }.to_not raise_error
+          tr_task.should be_instance_of(Taskrabbit::Task)
+          tr_task.location_visits.count.should == 2
         end
       end
     end
