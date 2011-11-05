@@ -24,21 +24,25 @@ module Taskrabbit
       super options
     end
 
+    # do a request through the api instance
     def request(*args)
       api.request *args
     end
 
+    # check if the object is valid
     def valid?
       errors.nil? and error.nil?
     end
 
+    # remove the errors from the object
     def clear_errors
       %w{error errors}.map { |k| self.delete(k) }
     end
 
+    # reload the object after doing a query to the api
     def reload(method, path, options = {})
       self.loaded = true
-      response = api.request(method, path, self.class, options)
+      response = request(method, path, self.class, options)
       self.merge!(response)
       clear_errors
       true
@@ -47,8 +51,11 @@ module Taskrabbit
       false
     end
     
+    # fetch the object
     def fetch; end
 
+    # get the property from the hash
+    # if the value is not set and the object has not been loaded, try to load it
     def [](property)
       value = nil
       return value unless (value = super(property)).nil?

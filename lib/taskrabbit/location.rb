@@ -16,7 +16,7 @@ module Taskrabbit
                when User
                  "users/#{scope.id}/locations"
                else
-                 'locations'
+                 raise Error.new("Action not defined")
                end
         @found = scope.request('get', path, Api::collection_transformers[self], options)
       end

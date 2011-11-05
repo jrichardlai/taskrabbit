@@ -9,6 +9,8 @@ module Taskrabbit
     end
     
     module ClassMethods
+      # define has many that will proxy the association to the class
+      # if the association has been loaded previously, no proxy will be used
       def has_many(association, klass)
         class_eval <<-"END"
         def #{association}
@@ -20,6 +22,7 @@ module Taskrabbit
     end
     
     module InstanceMethods
+      # check if the property has been loaded
       def property_present?(property)
         respond_to?(:loaded) and loaded and self.class.property?(property) and self[property]
       end

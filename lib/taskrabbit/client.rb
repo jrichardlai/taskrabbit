@@ -8,6 +8,7 @@ module Taskrabbit
     end
 
     module InstanceMethods
+      # monkey patch APISmith::Client transform_response to set the api to the object
       def transform_response(response, options)
         transformer = options[:transform] || options[:transformer]
         if transformer
@@ -19,6 +20,7 @@ module Taskrabbit
         end
       end
 
+      # check if an error has occured
       def check_response_errors(response)
         if response and response.respond_to?(:response)
           case response.response
