@@ -1,62 +1,107 @@
-For the case when we have to set the client_secret
+# TaskRabbit Ruby Gem
 
-To get an user:
+Ruby wrapper for TaskRabbit API.
 
-@api = Taskrabbit::API.new(client_secret)
-@api.user(some_user_id)
+## Installation
 
-To have a authenticated user:
+    gem install taskrabbit
 
-class User
-  :token
-end
+## Usage Example
 
-@api  = Taskrabbit::API.new(client_secret)     | Taskrabbit::API.client_secret = 'client_secret'
-@api.login(email, password)                    | TaskRabbit::API.login()
-or
-@api.signup()                                  | TaskRabbit::API.signup()
-or
-@api.oauth()                                   | TaskRabbit::API.oauth()
+### Configuration
 
+In an initializer file.
 
-login/oauth => /api/v1/oauth
+    Taskrabbit.configure do |config|
+      config.client_secret = 'your-client-secret'
+    end
 
-TaskRabbit::API.tasks.all
-TaskRabbit::API.users.all
+### use the API client
 
-TaskRabbit::API.logout
+    tr = Taskrabbit::Api.new
+    
+or with a user token
 
-@user = TaskRabbit::API.current_user
-@user.account # will do GET account and return a User
-@user.tasks.all
-@user.tasks.find(321)
-@user.tasks.create()
+    tr = Taskrabbit::Api.new(user_token)
 
-@task = @user.tasks.create /api/v1/tak
+### Get the list of all the tasks
 
-If stored card missing
+    tr = Taskrabbit::Api.new
+    # to get the /tasks
+    tasks = tr.tasks.all
+    # fetch the first task
+    tasks.first
 
-if @task.need_card?
-   @task.set_card(card_informations)
-end
+### Find a task
 
+    tr = Taskrabbit::Api.new
+    t = tr.tasks.find(31231) # This actually wont do the request
 
-@client.tasks.create(some_params)
+To request the API:
 
-OR if we put in some initializer:
+    t.fetch # force fetching
 
-Taskrabbit::API.client_secret = 'client_secret'
+or simply access a property:
 
-To get an user:
+    t.name # will do the query
 
-Taskrabbit.user(some_user_id)
+### Find the tasks of an user
 
-For Oauth:
+    tr.users.find(user_id).tasks
 
-@user = Taskrabbit.oauth(some_user_oauth_token)
-@user.account # will do GET account and return a User
+### Create a task
 
-Should I use api/users since oauth/users display a view
-Which endpoint use to create the user ?
+    tr = Taskrabbit::Api.new(user_token)
+    task = tr.tasks.create({:named_price => 32, :name => 'Ikea'})
 
-one need the stored card
+or 
+
+    task = tr.tasks.new({:named_price => 32, :name => 'Ikea'})
+    task.save
+
+### Update a task
+
+    task = tr.tasks.find('some-id')
+    task.named_price = 45
+    task.save
+
+### Error for tasks creation or update
+
+    tr = Taskrabbit::Api.new(client_secret)
+    task = tr.tasks.new
+    unless task.save
+      task.error # => "Task title can't be blank, \nAmount you are willing to pay is not a number"
+      task.errors # => { "messages" => ["Task title can't be blank", "Amount you are willing to pay is not a number"],
+                         "fields" => [["name","can't be blank"], ["named_price","is not a number"]] }
+    end
+
+### User account
+
+    tr = Taskrabbit::Api.new(client_secret)
+    tr.account # => Taskrabbit::User object
+
+    tr.account.tasks # => List of tasks
+    tr.account.tasks.create(some_params)
+
+### Get list of cities
+
+    tr.cities.each do |city|
+      city.name
+    end
+
+### Find a city using the id
+
+    tr.cities.find(3).name # => "SF Bay Area"
+
+### More informations
+
+More informations: http://taskrabbit.github.com
+
+## TODO
+
+Add:
+
+- Tasks locations
+- Picture and sound upload
+- StoredCard
+- Offer
