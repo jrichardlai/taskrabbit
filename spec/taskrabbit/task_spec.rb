@@ -37,6 +37,17 @@ describe Taskrabbit::Task do
     } 
   }
   
+  describe "#unpaid?" do
+    it "should return true if the state of the Task is unpaid" do
+      Taskrabbit::Task.new(:state => 'unpaid').should be_unpaid
+    end
+
+    it "should return false if the state of the Task is not unpaid" do
+      Taskrabbit::Task.new.should_not be_unpaid
+      Taskrabbit::Task.new(:state => 'opened').should_not be_unpaid
+    end
+  end
+  
   describe "api endpoints" do
     describe "#tasks" do
       it "should fetch tasks only once" do
@@ -116,7 +127,6 @@ describe Taskrabbit::Task do
         end
       end
     end
-
     
     describe "#create" do
       context "with valid params" do
@@ -135,7 +145,7 @@ describe Taskrabbit::Task do
             tr_task = nil
             expect { tr_task = tr.tasks.create(valid_params) }.to_not raise_error
             tr_task.should be_instance_of(Taskrabbit::Task)
-            # tr_task.unpaid?.should == true
+            tr_task.unpaid?.should == true
           end
         end
 
@@ -145,6 +155,7 @@ describe Taskrabbit::Task do
             tr_task = nil
             expect { tr_task = tr.tasks.create(valid_params) }.to_not raise_error
             tr_task.should be_instance_of(Taskrabbit::Task)
+            tr_task.unpaid?.should == false
           end
         end
 

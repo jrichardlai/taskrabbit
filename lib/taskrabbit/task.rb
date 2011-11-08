@@ -43,6 +43,10 @@ module Taskrabbit
       reload('get', "tasks/#{id.to_s}")
     end
 
+    def unpaid?
+      state == 'unpaid'
+    end
+
     def save
       if id.nil?
         reload('post', "tasks", :task => self.to_hash)
