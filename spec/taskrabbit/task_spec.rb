@@ -185,7 +185,6 @@ describe Taskrabbit::Task do
       end
       
       it "should post locations" do
-        pending
         tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
         VCR.use_cassette('tasks/create/with_location', :record => :new_episodes) do
           tr_task = nil

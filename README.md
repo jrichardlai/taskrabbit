@@ -16,6 +16,8 @@ In an initializer file.
       config.client_secret = 'your-client-secret'
     end
 
+## Task
+
 ### use the API client
 
     tr = Taskrabbit::Api.new
@@ -75,13 +77,15 @@ or
                          "fields" => [["name","can't be blank"], ["named_price","is not a number"]] }
     end
 
-### User account
+## User account
 
     tr = Taskrabbit::Api.new(client_secret)
     tr.account # => Taskrabbit::User object
 
     tr.account.tasks # => List of tasks
     tr.account.tasks.create(some_params)
+
+## Cities
 
 ### Get list of cities
 
@@ -101,7 +105,5 @@ More informations: http://taskrabbit.github.com
 
 Add:
 
-- Tasks locations
 - Picture and sound upload
-- StoredCard
 - Offer
