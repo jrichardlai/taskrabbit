@@ -40,7 +40,7 @@ module Taskrabbit
     end
     
     def fetch
-      reload('get', "tasks/#{id.to_s}")
+      reload('get', "tasks/#{id.to_s}") unless id.nil?
     end
 
     def save
