@@ -14,8 +14,7 @@ module Taskrabbit
     end
 
     def all(options = {})
-      return @all if @all and !options.delete(:reload)
-      @all = proxy_found(options)
+      proxy_found(options)
     end
     
     def new(options = {})
@@ -40,12 +39,11 @@ module Taskrabbit
     protected
 
       def proxy_found(options)
+        to_reload = options.delete(:reload)
+        return (@found = load_found(options)) if to_reload
         # Check to see if options have changed
-        if @opts == options
-          @found ||= load_found(options)
-        else
-          load_found(options)
-        end
+        @found = load_found(options) unless @opts == options
+        @found
       end
 
     private

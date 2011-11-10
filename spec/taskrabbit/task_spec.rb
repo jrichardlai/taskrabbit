@@ -58,6 +58,8 @@ describe Taskrabbit::Task do
           tr_tasks.first.should be_instance_of(Taskrabbit::Task)
           Taskrabbit::Api.should_receive(:get).with("/api/v1/tasks", anything).once.and_return []
           tr_tasks.last(:reload => true)
+          Taskrabbit::Api.should_not_receive(:get).with("/api/v1/tasks", anything)
+          tr_tasks.last
         end
       end
     end

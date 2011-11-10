@@ -33,6 +33,8 @@ or with a user token
     tasks = tr.tasks.all
     # fetch the first task
     tasks.first
+    
+    tasks.all(:reload => true) # => will redo the query
 
 ### Find a task
 
