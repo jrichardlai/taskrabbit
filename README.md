@@ -65,7 +65,7 @@ or
 
 ### Update a task
 
-    task = tr.tasks.find('some-id')
+    task = tr.tasks.find(32121)
     task.named_price = 45
     task.save
 
@@ -77,6 +77,18 @@ or
       task.error # => "Task title can't be blank, \nAmount you are willing to pay is not a number"
       task.errors # => { "messages" => ["Task title can't be blank", "Amount you are willing to pay is not a number"],
                          "fields" => [["name","can't be blank"], ["named_price","is not a number"]] }
+    end
+
+### Redirect
+
+In some case TaskRabbit will return an url which should be used for further operations (i.e: when the user doesn't have a credit card).
+
+    tr = Taskrabbit::Api.new(client_secret)
+    task = tr.tasks.new
+    unless task.save
+      if task.redirect?
+        task.redirect_url #=> 'http://www.taskrabbit.com/somepath'
+      end
     end
 
 ## User account
