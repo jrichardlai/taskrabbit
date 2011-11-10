@@ -108,3 +108,4 @@ More informations: http://taskrabbit.github.com
 Add:
 
 - Picture and sound upload
+- Pages
