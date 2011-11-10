@@ -6,6 +6,7 @@ module Taskrabbit
     attr_accessor :loaded
     
     property :errors
+    property :links
     property :error
     
     class << self
@@ -34,6 +35,14 @@ module Taskrabbit
       errors.nil? and error.nil?
     end
 
+    def redirect_url
+      links["redirect"] if links
+    end
+
+    def redirect?
+      !!redirect_url
+    end
+
     # remove the errors from the object
     def clear_errors
       %w{error errors}.map { |k| self.delete(k) }
@@ -45,7 +54,7 @@ module Taskrabbit
       response = request(method, path, self.class, options)
       self.merge!(response)
       clear_errors
-      true
+      !redirect?
     rescue Smash::Error => e
       self.merge!(e.response) if e.response.is_a?(Hash)
       false

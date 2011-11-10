@@ -23,6 +23,28 @@ describe Taskrabbit::Smash do
     subject.loaded.should be_false
   end
   
+  describe "#redirect_url" do
+    it "should return links['redirect']" do
+      subject.stub(:links => {'redirect' => 'something'})
+      subject.redirect_url.should == 'something'
+    end
+    
+    it "should not throw error if links is empty" do
+      expect { subject.redirect_url }.to_not raise_error
+    end
+  end
+  
+  describe "#redirect?" do
+    it "should return false if redirect_url is empty" do
+      subject.redirect?.should == false
+    end
+
+    it "should return true if redirect_url is not empty" do
+      subject.stub(:redirect_url => "something")
+      subject.redirect?.should == true
+    end
+  end
+  
   describe "#valid?" do
     it "should return true" do
       subject.should be_valid

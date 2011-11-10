@@ -93,6 +93,15 @@ describe Taskrabbit::Task do
     end
     
     describe "#save" do
+
+      it "should not do an extra query to tasks if the id is nil" do
+        Taskrabbit::Api.should_not_receive(:get).with("http://localhost:3000/api/v1/tasks/?")
+        Taskrabbit::Api.should_receive(:post).with("/api/v1/tasks", anything).and_return({:id => 1})
+        tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
+        tr_task = tr.tasks.new(valid_params)
+        tr_task.save
+      end
+
       it "should create a new task if new" do
         tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
         VCR.use_cassette('tasks/save', :record => :new_episodes) do
@@ -117,6 +126,19 @@ describe Taskrabbit::Task do
       end
     end
     
+    describe "#update" do
+      context "with valid params" do
+        it "should return an error if the user is not logged in" do
+          tr = Taskrabbit::Api.new
+          VCR.use_cassette('tasks/create/without_user', :record => :new_episodes) do
+            tr_task = nil
+            expect { tr_task = tr.tasks.create(valid_params) }.to raise_error(Taskrabbit::Error, 'There must be an authenticated user for this action')
+            tr_task.should be_nil
+          end
+        end
+      end
+    end
+    
     describe "#create" do
       context "with valid params" do
         it "should return an error if the user is not logged in" do
@@ -131,9 +153,11 @@ describe Taskrabbit::Task do
         it "should create the task if the user is authenticated but does not have a credit card" do
           tr = Taskrabbit::Api.new(TR_USERS[:without_card][:secret])
           VCR.use_cassette('tasks/create/without_credit_card', :record => :new_episodes) do
-            tr_task = nil
-            expect { tr_task = tr.tasks.create(valid_params) }.to_not raise_error
+            tr_task = tr.tasks.new(valid_params)
+            tr_task.save.should == false
             tr_task.should be_instance_of(Taskrabbit::Task)
+            tr_task.redirect?.should be_true
+            tr_task.redirect_url.should =~ %r{https://local\.taskrabbit\.com/tasks/my-first-task--\d+\?card=true}
           end
         end
 
