@@ -17,10 +17,10 @@ describe Taskrabbit::Account do
     its(:first_name) { should == "Bob" }
     its(:full_name) { should == "Bob Sponge" }
     its(:display_name) { should == "Bob S." }
-    its(:tasks) { should == Taskrabbit::Task }
+    its(:tasks) { should be_a(Taskrabbit::Collection) } # TaskRabbit returns tasks in the json
     its(:city) { should be_instance_of(Taskrabbit::City) }
     its(:zip_code) { should == "64321" }
-    its(:locations) { should be_a(Taskrabbit::Collection) }
+    its(:locations) { should be_a(Taskrabbit::Collection) } # TaskRabbit returns locations in the json
     its(:links) { should be_instance_of(Hash) }
   end
 

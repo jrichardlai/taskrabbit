@@ -42,9 +42,14 @@ describe Taskrabbit::User do
       describe "tasks" do
         let(:tr) { tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret]) }
         
-        it "should not do an extra query to users/#{TR_USERS[:with_card][:id]}" do
+        it "should not do an extra query to users/#{TR_USERS[:with_card][:id]} when fetching all tasks" do
           Taskrabbit::Api.should_not_receive(:get).with("/api/v1/users/#{TR_USERS[:with_card][:id]}", anything).never
           tr.users.find(TR_USERS[:with_card][:id]).tasks.all
+        end
+
+        it "should not do an extra query to users/#{TR_USERS[:with_card][:id]} when finding task" do
+          Taskrabbit::Api.should_not_receive(:get).with("/api/v1/users/#{TR_USERS[:with_card][:id]}", anything).never
+          tr.users.find(TR_USERS[:with_card][:id]).tasks.find('some-id')
         end
 
         it "should fetch tasks with users/#{TR_USERS[:with_card][:id]}/tasks" do

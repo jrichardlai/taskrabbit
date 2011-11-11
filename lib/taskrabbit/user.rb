@@ -11,15 +11,11 @@ module Taskrabbit
     property :locations, :transformer => Api::collection_transformers[Location]
     property :links
 
-    def fetch
-      reload('get', "users/#{id.to_s}")
-    end
-    
     has_many :tasks, Task
     has_many :locations, Location
 
-    def tasks
-      @tasks ||= Proxy.new(self, Task)
+    def fetch
+      reload('get', "users/#{id.to_s}")
     end
 
   end
