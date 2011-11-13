@@ -15,7 +15,7 @@ module Taskrabbit
     end
 
     has_many :users, User
-    has_many :tasks, Task
+    has_many :tasks, Task, :on => 'tasks'
     has_many :cities, City
 
     def account

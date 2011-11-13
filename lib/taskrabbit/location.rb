@@ -12,13 +12,7 @@ module Taskrabbit
 
     class << self
       def all(scope, options = {})
-        path = case scope
-               when User
-                 "users/#{scope.id}/locations"
-               else
-                 raise Error.new("Action not defined")
-               end
-        scope.request('get', path, Api::collection_transformers[self], options)
+        scope.request('get', scope.association_path(self), Api::collection_transformers[self], options)
       end
     end
   end

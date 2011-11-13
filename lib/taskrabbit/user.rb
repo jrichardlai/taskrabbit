@@ -11,8 +11,8 @@ module Taskrabbit
     property :locations, :transformer => Api::collection_transformers[Location]
     property :links
 
-    has_many :tasks, Task
-    has_many :locations, Location
+    has_many :tasks, Task, :on => lambda { |user| "users/#{user.id}/tasks" }
+    has_many :locations, Location, :on => lambda { |user| "users/#{user.id}/locations" }
 
     def fetch
       reload('get', "users/#{id.to_s}")
