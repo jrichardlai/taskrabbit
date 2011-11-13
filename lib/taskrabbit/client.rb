@@ -4,6 +4,17 @@ module Taskrabbit
       base.class_eval do
         include APISmith::Client
         include InstanceMethods
+        extend  ClassMethods
+      end
+    end
+
+    module ClassMethods
+      def collection_transformers
+        @collection_transformers ||= Hash.new do |h, k|
+          h[k] = Class.new(Collection).tap do |klass|
+            klass.transformer_for :items, k
+          end
+        end
       end
     end
 

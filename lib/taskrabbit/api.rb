@@ -6,14 +6,6 @@ module Taskrabbit
     attr_accessor :user_token
     attr_accessor *Config::VALID_OPTIONS_KEYS
 
-    def self.collection_transformers
-      @collection_transformers ||= Hash.new do |h, k|
-        h[k] = Class.new(Collection).tap do |klass|
-          klass.transformer_for :items, k
-        end
-      end
-    end
-
     has_many :users, User
     has_many :tasks, Task, :on => 'tasks'
     has_many :cities, City
