@@ -30,6 +30,12 @@ module Taskrabbit
       end
       self.user_token = user_token if user_token
     end
+    
+    def request(method, path, transformer, options = {})
+      send(method, path, request_params(transformer, options))
+    end
+
+    private
 
     def request_params(transformer, options = {})
       {
@@ -45,10 +51,5 @@ module Taskrabbit
         }
       }
     end
-
-    def request(method, path, transformer, options = {})
-      send(method, path, request_params(transformer, options))
-    end
-
   end
 end

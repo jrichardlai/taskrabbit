@@ -121,4 +121,3 @@ Add:
 
 - Picture and sound upload
 - Pages
-- Add protected and private

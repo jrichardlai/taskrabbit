@@ -43,11 +43,6 @@ module Taskrabbit
       !!redirect_url
     end
 
-    # remove the errors from the object
-    def clear_errors
-      %w{error errors}.map { |k| self.delete(k) }
-    end
-
     # reload the object after doing a query to the api
     def reload(method, path, options = {})
       self.loaded = true
@@ -75,5 +70,13 @@ module Taskrabbit
       end
       super(property)
     end
+
+    private
+
+    # remove the errors from the object
+    def clear_errors
+      %w{error errors}.map { |k| self.delete(k) }
+    end
+
   end
 end
