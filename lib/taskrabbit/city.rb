@@ -12,7 +12,7 @@ module Taskrabbit
     
     class << self
       def all(scope, options = {})
-        @found = scope.request('get', 'cities', Api::collection_transformers[self], options)
+        scope.request('get', 'cities', Api::collection_transformers[self], options)
       end
     end
   end
