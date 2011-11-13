@@ -22,18 +22,14 @@ module Taskrabbit
 
       # check if an error has occured
       def check_response_errors(response)
-        if response and response.respond_to?(:response)
-          case response.response
-          when Net::HTTPClientError, Net::HTTPServerError
-            error = "#{response.response.code} #{response.response.message}"
-            if response.is_a?(Hash)
-              error = response['error']
-              # if errors key is present then it's a validation error
-              raise Smash::Error.new(error, response) if response['errors']
-            end
-            raise Taskrabbit::Error.new(error, response)
-          end
-        end
+        return unless net_http_response = response.response rescue nil
+        return unless [Net::HTTPClientError, Net::HTTPServerError].include?(net_http_response.class.superclass)
+
+        response_hash = response.to_hash
+        error = response_hash.fetch('error') { "#{net_http_response.code} #{net_http_response.message}" }
+
+        raise Smash::Error.new(error, response) if response_hash['errors']
+        raise Taskrabbit::Error.new(error, response)
       end
     end
   end
