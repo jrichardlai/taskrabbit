@@ -25,17 +25,18 @@ module Taskrabbit
 
     # Create a hash of options and their values
     def options
-      options = {}
-      VALID_OPTIONS_KEYS.each{|k| options[k] = send(k)}
-      options
+      {}.tap do |options|
+        VALID_OPTIONS_KEYS.each{|k| options[k] = send(k)}
+      end
     end
     
     # Reset all configuration options to defaults
     def reset
-      self.base_uri      = DEFAULT_BASE_URI
-      self.endpoint      = DEFAULT_END_POINT
-      self.client_secret = DEFAULT_CLIENT_SECRET
-      self
+      self.tap do |c|
+        c.base_uri      = DEFAULT_BASE_URI
+        c.endpoint      = DEFAULT_END_POINT
+        c.client_secret = DEFAULT_CLIENT_SECRET
+      end
     end
     
   end
