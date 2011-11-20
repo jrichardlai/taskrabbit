@@ -30,7 +30,7 @@ module Taskrabbit
         when String
           paths[klass]
         when Proc
-          paths[klass].call(self)
+          paths[klass][self]
         else
           raise Error.new("Action not defined for #{self.class} on the #{klass} association")
         end
