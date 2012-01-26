@@ -24,6 +24,7 @@ module Taskrabbit
     def find(param, options={})
       return all(options) if param == :all
       return @target.find(@api, param) if @target.respond_to?(:find)
+      nil
     end
 
     COLLECTION_DELEGATE.each do |method|
