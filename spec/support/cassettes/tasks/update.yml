@@ -15,26 +15,26 @@
       message: OK
     headers: 
       etag: 
-      - "\"f5947d1db0593762f7355ab9285f42d1\""
+      - "\"3e2534e6d1fbd01d8fd94342e21bf9c3\""
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "2901"
+      - "4727"
       server: 
-      - WEBrick/1.3.1 (Ruby/1.8.7/2010-04-19)
+      - WEBrick/1.3.1 (Ruby/1.8.7/2011-02-18)
       date: 
-      - Thu, 10 Nov 2011 22:05:36 GMT
+      - Sat, 17 Mar 2012 23:12:59 GMT
       content-length: 
-      - "613"
+      - "677"
       cache-control: 
       - private, max-age=0, must-revalidate
-    body: "{\"name\":\"My First Task\",\"city\":{\"name\":\"New York City\",\"lng\":-74.005973,\"id\":4,\"links\":{\"get\":\"/api/v1/cities/4\"},\"lat\":40.714353},\"named_price\":20,\"complete_by_time\":1321041600,\"id\":22592,\"state_changed_at\":1320962735,\"cost_in_cents\":0,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/my-first-task--45\",\"get\":\"/api/v1/tasks/22592\",\"delete\":\"/api/v1/tasks/22592\",\"put\":\"/api/v1/tasks/22592\",\"authenticated\":\"http://local.taskrabbit.com/go/680c02cbb64bef6bc398d58d4e6f28088ab03762ef0ac3b37b8a5f9bc64db9ba233b4b4a2e77f0c73bbd125a20bf9af6e505\"},\"state_label\":\"posted\",\"assign_by_time\":1321027200,\"state\":\"opened\"}"
+    body: "{\"name\":\"My First Task\",\"city\":{\"name\":\"New York City\",\"lng\":-74.005973,\"id\":4,\"links\":{\"get\":\"/api/v1/cities/4\"},\"lat\":40.714353},\"charge_price\":20,\"private_runner\":false,\"named_price\":20,\"complete_by_time\":1332093600,\"id\":22680,\"state_changed_at\":1332025978,\"cost_in_cents\":0,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/my-first-task--54\",\"get\":\"/api/v1/tasks/22680\",\"delete\":\"/api/v1/tasks/22680\",\"put\":\"/api/v1/tasks/22680\",\"authenticated\":\"http://local.taskrabbit.com/go/ee139b2757bbbf6c4eee502816d10ccc2e8ed72f608a44f3a3ba4d902e7d9f42f7411102b41821050c3f0a2be896dd812140\"},\"runners\":{\"items\":[]},\"state_label\":\"posted\",\"assign_by_time\":1332082800,\"state\":\"opened\"}"
     http_version: "1.1"
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://localhost:3000/api/v1/tasks/22592?
-    body: name=New%20Name&id=22592
+    uri: http://localhost:3000/api/v1/tasks/22680?
+    body: name=New%20Name&id=22680
     headers: 
       x-client-application: 
       - euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn
@@ -46,18 +46,18 @@
       message: OK
     headers: 
       etag: 
-      - "\"1d730a51387cc988388d967d2e66d675\""
+      - "\"8331cd17eb90f131337fc675d2d0fc5a\""
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "1844"
+      - "2003"
       server: 
-      - WEBrick/1.3.1 (Ruby/1.8.7/2010-04-19)
+      - WEBrick/1.3.1 (Ruby/1.8.7/2011-02-18)
       date: 
-      - Thu, 10 Nov 2011 22:05:39 GMT
+      - Sat, 17 Mar 2012 23:13:02 GMT
       content-length: 
-      - "602"
+      - "666"
       cache-control: 
       - private, max-age=0, must-revalidate
-    body: "{\"name\":\"New Name\",\"city\":{\"name\":\"New York City\",\"lng\":-74.005973,\"id\":4,\"links\":{\"get\":\"/api/v1/cities/4\"},\"lat\":40.714353},\"named_price\":20,\"complete_by_time\":1321041600,\"id\":22592,\"state_changed_at\":1320962735,\"cost_in_cents\":0,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/new-name--2\",\"get\":\"/api/v1/tasks/22592\",\"delete\":\"/api/v1/tasks/22592\",\"put\":\"/api/v1/tasks/22592\",\"authenticated\":\"http://local.taskrabbit.com/go/df1a28f14bf403b086d0825fb22e19566a7fd7a3acf48ea53b0b0932311523174421db519e93a4b793efc3d83017014f0f06\"},\"state_label\":\"posted\",\"assign_by_time\":1321027200,\"state\":\"opened\"}"
+    body: "{\"name\":\"New Name\",\"city\":{\"name\":\"New York City\",\"lng\":-74.005973,\"id\":4,\"links\":{\"get\":\"/api/v1/cities/4\"},\"lat\":40.714353},\"charge_price\":20,\"private_runner\":false,\"named_price\":20,\"complete_by_time\":1332093600,\"id\":22680,\"state_changed_at\":1332025978,\"cost_in_cents\":0,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/new-name--4\",\"get\":\"/api/v1/tasks/22680\",\"delete\":\"/api/v1/tasks/22680\",\"put\":\"/api/v1/tasks/22680\",\"authenticated\":\"http://local.taskrabbit.com/go/78196cf7905ad6c4b1fb0e4df943b284253a8880163ee3675cdf4b06a9b9de63f6b1cc198064ac121d7afce702d81be0fb03\"},\"runners\":{\"items\":[]},\"state_label\":\"posted\",\"assign_by_time\":1332082800,\"state\":\"opened\"}"
     http_version: "1.1"

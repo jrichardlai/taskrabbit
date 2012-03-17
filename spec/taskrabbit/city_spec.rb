@@ -29,7 +29,7 @@ describe Taskrabbit::City do
           cities = nil
           expect { cities = tr.cities }.to_not raise_error
           cities.should == Taskrabbit::City
-          cities.count.should == 6
+          cities.count.should > 0
           cities.keys.should  == ["items", "links"]
           cities.links
           cities.each do |city|

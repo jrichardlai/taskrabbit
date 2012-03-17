@@ -15,25 +15,25 @@
       message: OK
     headers: 
       etag: 
-      - "\"78480e93b88ebb012b502c830925ec3a\""
+      - "\"b5bf82771fdaed13418e2307f53984e0\""
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "3152"
+      - "3862"
       server: 
-      - WEBrick/1.3.1 (Ruby/1.8.7/2010-04-19)
+      - WEBrick/1.3.1 (Ruby/1.8.7/2011-02-18)
       date: 
-      - Thu, 10 Nov 2011 22:05:30 GMT
+      - Sat, 17 Mar 2012 23:12:44 GMT
       content-length: 
-      - "613"
+      - "677"
       cache-control: 
       - private, max-age=0, must-revalidate
-    body: "{\"name\":\"My First Task\",\"city\":{\"name\":\"New York City\",\"lng\":-74.005973,\"id\":4,\"links\":{\"get\":\"/api/v1/cities/4\"},\"lat\":40.714353},\"named_price\":20,\"complete_by_time\":1321041600,\"id\":22591,\"state_changed_at\":1320962729,\"cost_in_cents\":0,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/my-first-task--44\",\"get\":\"/api/v1/tasks/22591\",\"delete\":\"/api/v1/tasks/22591\",\"put\":\"/api/v1/tasks/22591\",\"authenticated\":\"http://local.taskrabbit.com/go/96a72ee9e225d0b9548790e397c248c6d6a326e9c19bf6c3ccc8b0bfa62853f1cfe9d0930d34fd8da46b5da1679c1a5d5cd3\"},\"state_label\":\"posted\",\"assign_by_time\":1321027200,\"state\":\"opened\"}"
+    body: "{\"name\":\"My First Task\",\"city\":{\"name\":\"New York City\",\"lng\":-74.005973,\"id\":4,\"links\":{\"get\":\"/api/v1/cities/4\"},\"lat\":40.714353},\"charge_price\":20,\"private_runner\":false,\"named_price\":20,\"complete_by_time\":1332093600,\"id\":22678,\"state_changed_at\":1332025962,\"cost_in_cents\":0,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/my-first-task--52\",\"get\":\"/api/v1/tasks/22678\",\"delete\":\"/api/v1/tasks/22678\",\"put\":\"/api/v1/tasks/22678\",\"authenticated\":\"http://local.taskrabbit.com/go/934e67540e5d1b027df38063af1af256f7b1c6e072ea6dd8b3d6d2dc0171e002af8346f6620b00fa6bbfc40f3a227afcab02\"},\"runners\":{\"items\":[]},\"state_label\":\"posted\",\"assign_by_time\":1332082800,\"state\":\"opened\"}"
     http_version: "1.1"
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :delete
-    uri: http://localhost:3000/api/v1/tasks/22591?
+    uri: http://localhost:3000/api/v1/tasks/22678?
     body: 
     headers: 
       x-client-application: 
@@ -46,18 +46,18 @@
       message: OK
     headers: 
       etag: 
-      - "\"c684ccb7b19feb1ea8d9189a1c00413e\""
+      - "\"b0133f1c7394780d0643967c0006a9cb\""
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "2244"
+      - "1930"
       server: 
-      - WEBrick/1.3.1 (Ruby/1.8.7/2010-04-19)
+      - WEBrick/1.3.1 (Ruby/1.8.7/2011-02-18)
       date: 
-      - Thu, 10 Nov 2011 22:05:32 GMT
+      - Sat, 17 Mar 2012 23:12:47 GMT
       content-length: 
-      - "558"
+      - "622"
       cache-control: 
       - private, max-age=0, must-revalidate
-    body: "{\"name\":\"My First Task\",\"city\":{\"name\":\"New York City\",\"lng\":-74.005973,\"id\":4,\"links\":{\"get\":\"/api/v1/cities/4\"},\"lat\":40.714353},\"named_price\":20,\"complete_by_time\":1321041600,\"id\":22591,\"state_changed_at\":1320962731,\"cost_in_cents\":0,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/my-first-task--44\",\"get\":\"/api/v1/tasks/22591\",\"authenticated\":\"http://local.taskrabbit.com/go/96a72ee9e225d0b9548790e397c248c6d6a326e9c19bf6c3ccc8b0bfa62853f1cfe9d0930d34fd8da46b5da1679c1a5d5cd3\"},\"state_label\":\"canceled\",\"assign_by_time\":1321027200,\"state\":\"canceled\"}"
+    body: "{\"name\":\"My First Task\",\"city\":{\"name\":\"New York City\",\"lng\":-74.005973,\"id\":4,\"links\":{\"get\":\"/api/v1/cities/4\"},\"lat\":40.714353},\"charge_price\":20,\"private_runner\":false,\"named_price\":20,\"complete_by_time\":1332093600,\"id\":22678,\"state_changed_at\":1332025965,\"cost_in_cents\":0,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/my-first-task--52\",\"get\":\"/api/v1/tasks/22678\",\"authenticated\":\"http://local.taskrabbit.com/go/934e67540e5d1b027df38063af1af256f7b1c6e072ea6dd8b3d6d2dc0171e002af8346f6620b00fa6bbfc40f3a227afcab02\"},\"runners\":{\"items\":[]},\"state_label\":\"canceled\",\"assign_by_time\":1332082800,\"state\":\"canceled\"}"
     http_version: "1.1"

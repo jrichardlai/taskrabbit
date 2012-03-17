@@ -37,7 +37,7 @@ module Taskrabbit
         return unless [Net::HTTPClientError, Net::HTTPServerError].include?(net_http_response.class.superclass)
 
         response_hash = response.to_hash
-        error = response_hash.fetch('error') { "#{net_http_response.code} #{net_http_response.message}" }
+        error = response_hash.fetch('error') { "#{net_http_response.code} #{net_http_response.message}".strip }
 
         raise Smash::Error.new(error, response) if response_hash['errors']
         raise Taskrabbit::Error.new(error, response)
