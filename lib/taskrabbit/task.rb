@@ -4,14 +4,18 @@ module Taskrabbit
     property :name
     property :user, :transformer => User
     property :runner, :transformer => User
+    property :runners, :transformer => Api::collection_transformers[User]
     property :named_price
+    property :charge_price
     property :cost_in_cents
     property :links
     property :state_label
     property :city_id
     property :city, :transformer => City
-    property :description
-    property :virtual
+    property :description, :default => ''
+    property :private_description, :default => ''
+    property :private_runner, :default => false
+    property :virtual, :default => false
     property :state
     property :complete_by_time, :transformer => TIME_TRANSFORMER
     property :state_changed_at, :transformer => TIME_TRANSFORMER

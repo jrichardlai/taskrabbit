@@ -18,8 +18,15 @@ describe Taskrabbit::Task do
     its(:name) { should == "2 Hours of House Cleaning + 1 Hour of House Chores" }
     its(:user) { should be_instance_of(Taskrabbit::User) }
     its(:runner) { should be_instance_of(Taskrabbit::User) }
+    its(:runners) { should be_a(Taskrabbit::Collection) }
     its(:cost_in_cents) { should == 0 }
-    its(:description) { should }
+    its(:description) { should == '' }
+    its(:private_description) { should == '' }
+    its(:named_price) { should == nil }
+    its(:charge_price) { should == nil }
+    its(:cost_in_cents) { should == 0 }
+    its(:private_runner) { should == false }
+    its(:virtual) { should == false }
     its(:state) { should == 'closed' }
     its(:state_label) { should == 'closed' }
     its(:location_visits) { should be_nil }
@@ -27,6 +34,7 @@ describe Taskrabbit::Task do
     its(:assign_by_time) { should be_instance_of(Time) }
     its(:complete_by_time) { should be_instance_of(Time) }
     its(:state_changed_at) { should be_instance_of(Time) }
+    its(:links) { should be_instance_of(Hash) }
   end
 
   let(:valid_params) { 
