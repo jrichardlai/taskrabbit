@@ -5,6 +5,10 @@ module Taskrabbit
     property :first_name
     property :full_name
     property :display_name
+    property :runner, :default => false
+    property :email
+    property :mobile_phone
+    property :home_phone
     property :tasks, :transformer => Api::collection_transformers[Task]
     property :city, :transformer => City
     property :zip_code

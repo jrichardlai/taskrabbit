@@ -19,6 +19,10 @@ describe Taskrabbit::User do
     its(:first_name) { should == "Bob" }
     its(:full_name) { should == "Bob Sponge" }
     its(:display_name) { should == "Bob S." }
+    its(:runner) { should == false }
+    its(:email) { should == 'bobsponge@example.com' }
+    its(:mobile_phone) { should == nil }
+    its(:home_phone) { should == nil }
     its(:tasks) { should == Taskrabbit::Task }
     its(:city) { should be_instance_of(Taskrabbit::City) }
     its(:zip_code) { should == "64321" }
