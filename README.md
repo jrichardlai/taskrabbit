@@ -16,6 +16,12 @@ In an initializer file.
       config.client_secret = 'your-client-secret'
     end
 
+Available configuration options:
+
+   * client_secret: client secret that has been given to you by TaskRabbit
+   * base_uri: uri of the server (not mandatory, default to www.taskrabbit.com) 
+   * endpoint: endpoint (not mandatory, default to api/v1)
+
 ## Task
 
 ### use the API client
