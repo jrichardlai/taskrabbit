@@ -4,9 +4,11 @@ Ruby wrapper for TaskRabbit API.
 
 ## Installation
 
-I have not published the gem yet so you will either have to vendor it or use a Gemfile:
+    gem install taskrabbit
 
-    gem 'taskrabbit', :git => 'git://github.com/jrichardlai/taskrabbit.git'
+Or in a Gemfile:
+
+    gem 'taskrabbit'
 
 
 ## Usage Example
