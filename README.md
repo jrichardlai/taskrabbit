@@ -19,12 +19,14 @@ In an initializer file.
 
     Taskrabbit.configure do |config|
       config.client_secret = 'your-client-secret'
+      config.base_uri      = 'https://sandbox.com'
+      config.endpoint      = 'api/v2'
     end
 
 Available configuration options:
 
    * client_secret: client secret that has been given to you by TaskRabbit
-   * base_uri: uri of the server (not mandatory, default to www.taskrabbit.com) 
+   * base_uri: uri of the server (not mandatory, default to https://www.taskrabbit.com) 
    * endpoint: endpoint (not mandatory, default to api/v1)
 
 ## Task
