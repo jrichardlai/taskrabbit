@@ -35,7 +35,7 @@ Available configuration options:
 
     tr = Taskrabbit::Api.new
     
-or with a user token
+or with a user token returned by TaskRabbit.
 
     tr = Taskrabbit::Api.new(user_token)
 
@@ -84,7 +84,7 @@ or
 
 ### Error for tasks creation or update
 
-    tr = Taskrabbit::Api.new(client_secret)
+    tr = Taskrabbit::Api.new(user_token)
     task = tr.tasks.new
     unless task.save
       task.error # => "Task title can't be blank, \nAmount you are willing to pay is not a number"
@@ -96,7 +96,7 @@ or
 
 In some case TaskRabbit will return an url which should be used for further operations (i.e: when the user doesn't have a credit card).
 
-    tr = Taskrabbit::Api.new(client_secret)
+    tr = Taskrabbit::Api.new(user_token)
     task = tr.tasks.new
     unless task.save
       if task.redirect?
@@ -106,7 +106,7 @@ In some case TaskRabbit will return an url which should be used for further oper
 
 ## User account
 
-    tr = Taskrabbit::Api.new(client_secret)
+    tr = Taskrabbit::Api.new(user_token)
     tr.account # => Taskrabbit::User object
 
     tr.account.tasks # => List of tasks
