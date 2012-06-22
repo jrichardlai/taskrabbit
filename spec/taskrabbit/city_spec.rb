@@ -30,7 +30,7 @@ describe Taskrabbit::City do
           expect { cities = tr.cities }.to_not raise_error
           cities.should == Taskrabbit::City
           cities.count.should > 0
-          cities.keys.should  == ["items", "links"]
+          cities.keys.should =~ ["items", "links"]
           cities.links
           cities.each do |city|
             city.should be_instance_of Taskrabbit::City
