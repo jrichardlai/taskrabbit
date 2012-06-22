@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/jrichardlai/taskrabbit.png?branch=master)](http://travis-ci.org/jrichardlai/taskrabbit)
+
 # TaskRabbit Ruby Gem
 
 Ruby wrapper for TaskRabbit API.
