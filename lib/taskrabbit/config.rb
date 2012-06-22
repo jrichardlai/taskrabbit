@@ -1,11 +1,13 @@
 module Taskrabbit
   module Config
-    DEFAULT_BASE_URI      = 'http://www.taskrabbit.com'
-    DEFAULT_END_POINT     = 'api/v1'
+    DEFAULT_BASE_URI   = 'http://www.taskrabbit.com'
+    DEFAULT_END_POINT  = 'api/v1'
     DEFAULT_API_SECRET = nil
+    DEFAULT_API_KEY    = nil
 
     VALID_OPTIONS_KEYS = [
       :base_uri,
+      :api_key,
       :api_secret,
       :endpoint
     ]
@@ -33,9 +35,10 @@ module Taskrabbit
     # Reset all configuration options to defaults
     def reset
       self.tap do |c|
-        c.base_uri      = DEFAULT_BASE_URI
-        c.endpoint      = DEFAULT_END_POINT
+        c.base_uri   = DEFAULT_BASE_URI
+        c.endpoint   = DEFAULT_END_POINT
         c.api_secret = DEFAULT_API_SECRET
+        c.api_key    = DEFAULT_API_KEY
       end
     end
     
