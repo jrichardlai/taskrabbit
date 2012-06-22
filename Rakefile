@@ -2,14 +2,14 @@ require 'bundler'
 Bundler::GemHelper.install_tasks
 
 require 'rubygems'
-require 'rake/gempackagetask'
-require 'rake/rdoctask'
+require 'rubygems/package_task'
+require 'rdoc/task'
 require 'rspec/core'
 require 'rspec/core/rake_task'
 
 spec = eval(File.read('taskrabbit.gemspec'))
 
-Rake::GemPackageTask.new(spec) do |pkg|
+Gem::PackageTask.new(spec) do |pkg|
   pkg.gem_spec = spec
 end
 

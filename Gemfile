@@ -4,6 +4,7 @@ source "http://rubygems.org"
 gemspec
 
 group :development do
+  gem 'rdoc'
   gem 'rake'
   gem 'yard'
   gem 'ruby-debug'
@@ -16,7 +17,7 @@ group :test do
   gem 'guard-rspec'
   gem 'rb-fsevent'
   gem 'growl'
-  gem 'vcr'
+  gem 'vcr', '~> 1.11.3'
   gem 'fakeweb'
   gem 'rcov', :require => nil
 end

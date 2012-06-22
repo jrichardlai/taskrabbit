@@ -16,6 +16,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'api_smith', '1.0.0'
 
   s.add_development_dependency "rspec", "~> 2.6.0"
+  s.add_development_dependency "vcr", "~> 1.11.3"
+  s.add_development_dependency "rdoc", '~> 3.12'
 
   s.rubyforge_project = "taskrabbit"
 
