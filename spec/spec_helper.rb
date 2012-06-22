@@ -17,9 +17,9 @@ TR_USERS = {
 module Taskrabbit
   module Config
     remove_const(:DEFAULT_BASE_URI)
-    remove_const(:DEFAULT_CLIENT_SECRET)
-    DEFAULT_BASE_URI      = 'http://localhost:3000'
-    DEFAULT_CLIENT_SECRET = 'euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn'
+    remove_const(:DEFAULT_API_SECRET)
+    DEFAULT_BASE_URI   = 'http://localhost:3000'
+    DEFAULT_API_SECRET = 'euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn'
   end
 end
 Taskrabbit.reset

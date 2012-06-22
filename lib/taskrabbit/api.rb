@@ -35,7 +35,7 @@ module Taskrabbit
         :extra_body => options,
         :extra_request => {
           :headers => {
-            'X-Client-Application' => client_secret.to_s, 
+            'X-Client-Application' => api_secret.to_s, 
             'Authorization' => "OAuth #{user_token.to_s}"
           },
           :endpoint => endpoint.to_s,
