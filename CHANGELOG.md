@@ -1,3 +1,7 @@
+## v0.0.4
+
+* add number\_runner\_to\_fill to Task.
+
 ## v0.0.3
 
 * update default uri to secure connection.
