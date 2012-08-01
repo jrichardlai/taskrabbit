@@ -7,7 +7,7 @@ group :development do
   gem 'rdoc'
   gem 'rake'
   gem 'yard'
-  gem 'ruby-debug'
+  gem 'debugger'
   gem 'pry'
   gem 'awesome_print'
 end
@@ -19,5 +19,5 @@ group :test do
   gem 'growl'
   gem 'vcr', '~> 1.11.3'
   gem 'fakeweb'
-  gem 'rcov', :require => nil
+  gem 'simplecov'
 end
