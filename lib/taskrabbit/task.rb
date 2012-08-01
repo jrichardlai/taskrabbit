@@ -8,6 +8,7 @@ module Taskrabbit
     property :named_price
     property :charge_price
     property :cost_in_cents
+    property :number_runners_to_fill
     property :links
     property :state_label
     property :city_id

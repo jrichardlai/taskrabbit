@@ -35,6 +35,12 @@ describe Taskrabbit::Task do
     its(:complete_by_time) { should be_instance_of(Time) }
     its(:state_changed_at) { should be_instance_of(Time) }
     its(:links) { should be_instance_of(Hash) }
+
+    it "allows passing number_runners_to_fill" do
+      tr      = Taskrabbit::Api.new(TR_USERS[:without_card][:secret])
+      tr_task = tr.tasks.new(valid_params.merge({:number_runners_to_fill => 3}))
+      tr_task.number_runners_to_fill.should == 3
+    end
   end
 
   let(:valid_params) { 
