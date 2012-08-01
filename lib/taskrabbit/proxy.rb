@@ -1,9 +1,9 @@
-class BasicObject #:nodoc:
+class BaseObject #:nodoc:
   instance_methods.each { |m| undef_method m unless m =~ /(^__|^nil\?$|^send$|instance_eval|proxy_|^object_id$)/ }
-end unless defined?(BasicObject)
+end unless defined?(BaseObject)
 
 module Taskrabbit
-  class Proxy < BasicObject
+  class Proxy < BaseObject
 
     COLLECTION_DELEGATE = %w{first last count size length each keys links}.freeze
 
