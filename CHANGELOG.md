@@ -1,3 +1,7 @@
+## v0.0.5
+
+* add compatibility with ruby 1.9.3
+
 ## v0.0.4
 
 * add number\_runner\_to\_fill to Task.
