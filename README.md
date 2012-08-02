@@ -90,6 +90,7 @@ tr.users.find(user_id).tasks
 ```ruby
 tr = Taskrabbit::Api.new(user_token)
 task = tr.tasks.create({:named_price => 32, :name => 'Ikea'})
+task.new_record? #=> false
 ```
 
 or 
