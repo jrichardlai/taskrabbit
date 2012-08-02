@@ -34,8 +34,7 @@ module Taskrabbit
       # check if an error has occured
       def check_response_errors(response)
         return unless net_http_response = response.response rescue nil
-        return unless [Net::HTTPClientError, Net::HTTPServerError].include?(net_http_response.class.superclass)
-
+        return if ([Net::HTTPClientError, Net::HTTPServerError] & [net_http_response.class, net_http_response.class.superclass]).empty?
         response_hash = response.to_hash
         error = response_hash.fetch('error') { "#{net_http_response.code} #{net_http_response.message}".strip }
 

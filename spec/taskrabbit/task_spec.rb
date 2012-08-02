@@ -203,10 +203,11 @@ describe Taskrabbit::Task do
           tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
           VCR.use_cassette('tasks/create/with_invalid_params', :record => :new_episodes) do
             tr_task = nil
-            expect { tr_task = tr.tasks.create(invalid_params) }.to
-            raise_error(Taskrabbit::Error, "Task title can't be blank,\n" +
-                                           "Amount you are willing to pay needs to be a whole dollar amount greater than zero")
-            tr_task.should be_nil
+            tr_task = tr.tasks.create(invalid_params)
+            tr_task.should be_instance_of(Taskrabbit::Task)
+            tr_task.errors.should == {"messages"=>["Task title can't be blank", "Amount you are willing to pay needs to be a whole dollar amount greater than zero"], 
+                                      "fields"=>[["name", "can't be blank"], ["named_price", "needs to be a whole dollar amount greater than zero"]]}
+            tr_task.error.should  == "Task title can't be blank, \nAmount you are willing to pay needs to be a whole dollar amount greater than zero"
           end
         end
       end

@@ -1,0 +1,34 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: http://localhost:3000/api/v1/tasks?
+    body: 
+    headers:
+      x-client-application:
+      - euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn
+      authorization:
+      - OAuth RhyRtRg1bRNyqmdozkY6JJJ3eGDpoRGTm9AXUudp
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 422
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      x-runtime:
+      - '11415'
+      content-length:
+      - '365'
+      set-cookie:
+      - current_geo=1053; path=/; expires=Tue, 02-Oct-2012 06:08:56 GMT
+      cache-control:
+      - no-cache
+      server:
+      - thin 1.4.1 codename Chromeo
+    body: ! '{"errors":{"messages":["Task title can''t be blank","Amount you are willing
+      to pay needs to be a whole dollar amount greater than zero"],"fields":[["name","can''t
+      be blank"],["named_price","needs to be a whole dollar amount greater than zero"]]},"error":"Task
+      title can''t be blank, \nAmount you are willing to pay needs to be a whole dollar
+      amount greater than zero"}'
+    http_version: '1.1'

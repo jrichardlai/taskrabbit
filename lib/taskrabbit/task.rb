@@ -32,7 +32,9 @@ module Taskrabbit
       end
       
       def create(api, params)
-        api.request('post', "tasks", self, :task => params)
+        task = api.tasks.new(params)
+        task.save
+        task
       end
     end
     
