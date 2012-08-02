@@ -78,6 +78,20 @@ describe Taskrabbit::Task do
       end
     end
     
+    describe "#new_record?" do
+      subject { Taskrabbit::Task.new }
+
+      it "returns true if the task has no id" do
+        subject.stub(:id => nil)
+        subject.should be_new_record
+      end
+
+      it "returns false if the task has an id" do
+        subject.stub(:id => 123)
+        subject.should_not be_new_record
+      end
+    end
+
     describe "#find" do
 
       it "should fetch tasks" do

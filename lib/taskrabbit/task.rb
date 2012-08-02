@@ -50,6 +50,10 @@ module Taskrabbit
       end
     end
 
+    def new_record?
+      !id
+    end
+
     def delete!
       reload('delete', "tasks/#{id.to_s}")
     end
