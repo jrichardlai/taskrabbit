@@ -50,6 +50,13 @@ module Taskrabbit
       end
     end
 
+    def update_attributes(attributes)
+      attributes.each_pair do |key, value|
+        self.send("#{key}=", value)
+      end
+      save
+    end
+
     def new_record?
       !id
     end
