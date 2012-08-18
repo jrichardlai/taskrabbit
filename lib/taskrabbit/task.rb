@@ -18,6 +18,7 @@ module Taskrabbit
     property :private_runner, :default => false
     property :virtual, :default => false
     property :state
+    property :assignment_type
     property :complete_by_time, :transformer => TIME_TRANSFORMER
     property :state_changed_at, :transformer => TIME_TRANSFORMER
     property :assign_by_time, :transformer => TIME_TRANSFORMER
