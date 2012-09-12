@@ -6,7 +6,7 @@
     body: task[name]=My%20First%20Task&task[named_price]=20&task[city_id]=4
     headers: 
       x-client-application: 
-      - euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn
+      - <API_SECRET>
       authorization: 
       - OAuth
   response: !ruby/struct:VCR::Response 
