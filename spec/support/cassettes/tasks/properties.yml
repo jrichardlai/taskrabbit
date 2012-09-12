@@ -1,32 +1,84 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
     method: :get
-    uri: http://localhost:3000/api/v1/tasks/22545?
+    uri: https://taskrabbitdev.com/api/v1/tasks/22545?
     body: 
-    headers: 
-      x-client-application: 
+    headers:
+      x-client-application:
       - euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn
-      authorization: 
+      authorization:
       - OAuth
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
-    headers: 
-      etag: 
-      - "\"d7e8594808d34c7e4e8d87737f8ec5dc\""
-      content-type: 
+    headers:
+      etag:
+      - ! '"d7e8594808d34c7e4e8d87737f8ec5dc"'
+      content-type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "726"
-      server: 
+      x-runtime:
+      - '726'
+      server:
       - WEBrick/1.3.1 (Ruby/1.8.7/2011-02-18)
-      date: 
+      date:
       - Sat, 17 Mar 2012 23:31:20 GMT
-      content-length: 
-      - "1432"
-      cache-control: 
+      content-length:
+      - '1432'
+      cache-control:
       - private, max-age=0, must-revalidate
-    body: "{\"name\":\"2 Hours of House Cleaning + 1 Hour of House Chores\",\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"complete_by_time\":1318381200,\"id\":22545,\"state_changed_at\":1332026993,\"cost_in_cents\":0,\"runner\":{\"city\":{\"name\":\"Boston\",\"lng\":-71.059773,\"id\":1,\"links\":{\"get\":\"/api/v1/cities/1\"},\"lat\":42.358431},\"runner\":true,\"id\":66,\"links\":{\"get\":\"/api/v1/users/66\",\"avatar_url\":\"http://s3.amazonaws.com/taskrabbit-dev/avatars/66/thumb/jordan.png?1276495549\"},\"full_name\":\"Jordan H.\",\"short_name\":\"Jordan\",\"display_name\":\"Jordan H.\"},\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/task--278\",\"get\":\"/api/v1/tasks/22545\"},\"runners\":{\"items\":[{\"city\":{\"name\":\"Boston\",\"lng\":-71.059773,\"id\":1,\"links\":{\"get\":\"/api/v1/cities/1\"},\"lat\":42.358431},\"id\":66,\"runner\":true,\"short_name\":\"Jordan\",\"full_name\":\"Jordan H.\",\"links\":{\"get\":\"/api/v1/users/66\",\"avatar_url\":\"http://s3.amazonaws.com/taskrabbit-dev/avatars/66/thumb/jordan.png?1276495549\"},\"display_name\":\"Jordan H.\"}]},\"state_label\":\"closed\",\"assign_by_time\":1318014000,\"user\":{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"id\":49658,\"links\":{\"get\":\"/api/v1/users/49658\",\"avatar_url\":\"http://local.taskrabbit.com/images/default_avatars/poster_thumb.png\"},\"full_name\":\"Jean-Richard L.\",\"short_name\":\"Jean-Richard\",\"display_name\":\"Jean-Richard L.\"},\"state\":\"closed\"}"
-    http_version: "1.1"
+    body: ! '{"name":"2 Hours of House Cleaning + 1 Hour of House Chores","city":{"name":"SF
+      Bay Area","lng":-122.419416,"id":3,"links":{"get":"/api/v1/cities/3"},"lat":37.77493},"complete_by_time":1318381200,"id":22545,"state_changed_at":1332026993,"cost_in_cents":0,"runner":{"city":{"name":"Boston","lng":-71.059773,"id":1,"links":{"get":"/api/v1/cities/1"},"lat":42.358431},"runner":true,"id":66,"links":{"get":"/api/v1/users/66","avatar_url":"http://s3.amazonaws.com/taskrabbit-dev/avatars/66/thumb/jordan.png?1276495549"},"full_name":"Jordan
+      H.","short_name":"Jordan","display_name":"Jordan H."},"links":{"html":"http://local.taskrabbit.com/tasks/task--278","get":"/api/v1/tasks/22545"},"runners":{"items":[{"city":{"name":"Boston","lng":-71.059773,"id":1,"links":{"get":"/api/v1/cities/1"},"lat":42.358431},"id":66,"runner":true,"short_name":"Jordan","full_name":"Jordan
+      H.","links":{"get":"/api/v1/users/66","avatar_url":"http://s3.amazonaws.com/taskrabbit-dev/avatars/66/thumb/jordan.png?1276495549"},"display_name":"Jordan
+      H."}]},"state_label":"closed","assign_by_time":1318014000,"user":{"city":{"name":"SF
+      Bay Area","lng":-122.419416,"id":3,"links":{"get":"/api/v1/cities/3"},"lat":37.77493},"id":49658,"links":{"get":"/api/v1/users/49658","avatar_url":"http://local.taskrabbit.com/images/default_avatars/poster_thumb.png"},"full_name":"Jean-Richard
+      L.","short_name":"Jean-Richard","display_name":"Jean-Richard L."},"state":"closed"}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: https://taskrabbitdev.com:443/api/v1/tasks/52?
+    body: 
+    headers:
+      x-client-application:
+      - <API_SECRET>
+      authorization:
+      - OAuth
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/1.0.11
+      date:
+      - Wed, 12 Sep 2012 23:03:40 GMT
+      content-type:
+      - application/json; charset=utf-8
+      status:
+      - 200 OK
+      x-runtime:
+      - '0.152650'
+      content-length:
+      - '1417'
+      etag:
+      - ! '"1f50fdd2204ea47e6340962b9a4e95b5"'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      cache-control:
+      - max-age=0, private, must-revalidate
+    body: ! '{"links":{"html":"http://s-app1.taskrabbit.com/tasks/house-cleaning-7091","get":"/api/v1/tasks/52"},"runners":{"items":[]},"user":{"links":{"get":"/api/v1/users/40","avatar_url":"http://s-app1.taskrabbit.com/images/default_avatars/poster_thumb.png"},"friend_code_url":"http://taskrabbit.com/PAL/40","id":40,"short_name":"UserWith","display_name":"UserWith
+      c.","city":{"lat":37.77493,"links":{"get":"/api/v1/cities/3"},"id":1053,"name":"SF
+      Bay Area","lng":-122.419416},"full_name":"UserWith c."},"cost_in_cents":0,"id":52,"state_changed_at":1347490579,"description":"I
+      need to clean my house","city":{"links":{"get":"/api/v1/cities/3"},"lat":37.77493,"id":1053,"lng":-122.419416,"name":"SF
+      Bay Area"},"assign_by_time":1347577200,"name":"House Cleaning","state_label":"posted","complete_by_time":1347663600,"description_properties":[{"value":"I
+      need to clean my house","key":"description","title":"Description"},{"value":"Regular
+      Maintenance","key":"task_field_16","title":"Level of cleaning"},{"value":"Multiple
+      Rooms, 1 Bathroom","key":"task_field_17","title":"Size of house"},{"value":"Cleaning
+      supplies are already in the house","key":"task_field_18","title":"Do you have
+      all the necessary cleaning supplies at your house"},{"value":1347577200,"key":"assign_by_time","title":"If
+      unassigned, Task will expire on"},{"value":1347663600,"key":"complete_by_time","title":"Task
+      should be completed by"}],"state":"opened"}'
+    http_version: '1.1'

@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :get
-    uri: http://localhost:3000/api/v1/account?
+    uri: https://taskrabbitdev.com/api/v1/account?
     body: 
     headers: 
       x-client-application: 
@@ -33,7 +33,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :get
-    uri: http://localhost:3000/api/v1/users/49720/locations?
+    uri: https://taskrabbitdev.com/api/v1/users/49720/locations?
     body: 
     headers: 
       x-client-application: 

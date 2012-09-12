@@ -7,28 +7,28 @@ describe Taskrabbit::Task do
     before :all do
       tr = Taskrabbit::Api.new
       VCR.use_cassette('tasks/properties', :record => :new_episodes) do
-        @tr_task = tr.tasks.find(22545)
+        @tr_task = tr.tasks.find(ENV['TASK_ID'])
         @tr_task.fetch
       end
     end
 
     subject { @tr_task }
 
-    its(:id) { should == 22545 }
-    its(:name) { should == "2 Hours of House Cleaning + 1 Hour of House Chores" }
+    its(:id) { should == ENV['TASK_ID'].to_i }
+    its(:name) { should == "House Cleaning" }
     its(:user) { should be_instance_of(Taskrabbit::User) }
-    its(:runner) { should be_instance_of(Taskrabbit::User) }
+    its(:runner) { should be_nil }
     its(:runners) { should be_a(Taskrabbit::Collection) }
     its(:cost_in_cents) { should == 0 }
-    its(:description) { should == '' }
+    its(:description) { should == 'I need to clean my house' }
     its(:private_description) { should == '' }
     its(:named_price) { should == nil }
     its(:charge_price) { should == nil }
     its(:cost_in_cents) { should == 0 }
     its(:private_runner) { should == false }
     its(:virtual) { should == false }
-    its(:state) { should == 'closed' }
-    its(:state_label) { should == 'closed' }
+    its(:state) { should == 'opened' }
+    its(:state_label) { should == 'posted' }
     its(:location_visits) { should be_nil }
     its(:city) { should be_instance_of(Taskrabbit::City) }
     its(:assign_by_time) { should be_instance_of(Time) }
@@ -99,7 +99,7 @@ describe Taskrabbit::Task do
         VCR.use_cassette('tasks/find', :record => :new_episodes) do
           tr_task = nil
           expect { 
-            tr_task = tr.tasks.find(22545)
+            tr_task = tr.tasks.find(ENV['TASK_ID'])
             tr_task.name
           }.to_not raise_error
           tr_task.should be_instance_of(Taskrabbit::Task)

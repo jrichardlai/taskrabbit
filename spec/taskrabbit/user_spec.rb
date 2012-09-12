@@ -15,17 +15,17 @@ describe Taskrabbit::User do
     subject { @user }
 
     its(:id) { should == TR_USERS[:with_card][:id] }
-    its(:short_name) { should == "Bob" }
-    its(:first_name) { should == "Bob" }
-    its(:full_name) { should == "Bob Sponge" }
-    its(:display_name) { should == "Bob S." }
+    its(:short_name) { should == "UserWith" }
+    its(:first_name) { should == "UserWith" }
+    its(:full_name) { should == "UserWith card" }
+    its(:display_name) { should == "UserWith c." }
     its(:runner) { should == false }
-    its(:email) { should == 'bobsponge@example.com' }
+    its(:email) { should == 'userwithcard@taskrabbit.com' }
     its(:mobile_phone) { should == nil }
     its(:home_phone) { should == nil }
     its(:tasks) { should == Taskrabbit::Task }
     its(:city) { should be_instance_of(Taskrabbit::City) }
-    its(:zip_code) { should == "64321" }
+    its(:zip_code) { should == "12345" }
     its(:locations) { should == Taskrabbit::Location }
     its(:links) { should be_instance_of(Hash) }
   end
@@ -38,7 +38,7 @@ describe Taskrabbit::User do
           tr_user = nil
           expect { tr_user = tr.users.find(TR_USERS[:without_card][:id]) }.to_not raise_error
           tr_user.id.should == TR_USERS[:without_card][:id]
-          tr_user.short_name.should == 'John'
+          tr_user.short_name.should == 'User with no'
           tr_user.should be_instance_of(Taskrabbit::User)
         end
       end

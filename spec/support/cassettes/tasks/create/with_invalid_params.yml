@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :post
-    uri: http://localhost:3000/api/v1/tasks?
+    uri: https://taskrabbitdev.com/api/v1/tasks?
     body: 
     headers:
       x-client-application:

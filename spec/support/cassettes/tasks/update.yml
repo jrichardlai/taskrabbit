@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://localhost:3000/api/v1/tasks?
+    uri: https://taskrabbitdev.com/api/v1/tasks?
     body: task[name]=My%20First%20Task&task[named_price]=20&task[city_id]=4
     headers: 
       x-client-application: 
@@ -33,7 +33,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://localhost:3000/api/v1/tasks/22680?
+    uri: https://taskrabbitdev.com/api/v1/tasks/22680?
     body: name=New%20Name&id=22680
     headers: 
       x-client-application: 
