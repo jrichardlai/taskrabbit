@@ -23,6 +23,7 @@ module Taskrabbit
     property :state_changed_at, :transformer => TIME_TRANSFORMER
     property :assign_by_time, :transformer => TIME_TRANSFORMER
     property :location_visits, :transformer => Api::collection_transformers[Location]
+    property :offers, :transformer => Api::collection_transformers[Offer]
     property :other_locations_attributes
     property :uploaded_photos_attributes
     property :uploaded_sounds_attributes
