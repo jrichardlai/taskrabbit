@@ -1,30 +1,34 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
     method: :get
-    uri: https://taskrabbitdev.com/api/v1/tasks?
+    uri: https://taskrabbitdev.com:443/api/v1/tasks?include[task][]=errors&include[task][]=links&include[task][]=error&include[task][]=id&include[task][]=name&include[task][]=user&include[task][]=runner&include[task][]=runners&include[task][]=named_price&include[task][]=charge_price&include[task][]=cost_in_cents&include[task][]=number_runners_to_fill&include[task][]=state_label&include[task][]=city_id&include[task][]=city&include[task][]=description&include[task][]=private_description&include[task][]=private_runner&include[task][]=virtual&include[task][]=state&include[task][]=assignment_type&include[task][]=complete_by_time&include[task][]=state_changed_at&include[task][]=assign_by_time&include[task][]=location_visits&include[task][]=offers&include[task][]=other_locations_attributes&include[task][]=uploaded_photos_attributes&include[task][]=uploaded_sounds_attributes
     body: 
-    headers: 
-      x-client-application: 
-      - ""
-      authorization: 
+    headers:
+      x-client-application:
+      - ''
+      authorization:
       - OAuth
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
       code: 403
       message: Forbidden
-    headers: 
-      content-type: 
+    headers:
+      server:
+      - nginx/1.0.11
+      date:
+      - Thu, 13 Sep 2012 00:54:52 GMT
+      content-type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "628"
-      server: 
-      - WEBrick/1.3.1 (Ruby/1.8.7/2010-04-19)
-      date: 
-      - Wed, 02 Nov 2011 02:35:53 GMT
-      content-length: 
-      - "44"
-      cache-control: 
+      status:
+      - 403 Forbidden
+      x-runtime:
+      - '0.021289'
+      content-length:
+      - '44'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      cache-control:
       - no-cache
-    body: "{\"error\":\"Missing valid client application\"}"
-    http_version: "1.1"
+    body: ! '{"error":"Missing valid client application"}'
+    http_version: '1.1'

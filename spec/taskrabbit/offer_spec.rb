@@ -6,7 +6,7 @@ describe Taskrabbit::Location do
 
     before :all do
       tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
-      VCR.use_cassette('tasks/with_offers_properties', :record => :new_episodes) do
+      VCR.use_cassette('tasks/with_offers_properties', :record => :none) do
         @tr_task = tr.tasks.find(ENV["TASK_ID"])
         @tr_task.fetch
       end
@@ -18,6 +18,6 @@ describe Taskrabbit::Location do
     its(:id                ) { should == 7 }
     its(:charge_price      ) { should == 26 }
     its(:state             ) { should == "sent" }
-    its(:runner            ) { should be_instance_of(Taskrabbit::User) }
+    its(:runner_id         ) { should == 31 }
   end
 end

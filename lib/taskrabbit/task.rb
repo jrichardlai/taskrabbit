@@ -72,7 +72,8 @@ module Taskrabbit
     end
 
     def reload(method, path, options = {})
-      super(method, path, self.class.options_with_class_includes(options))
+      options = self.class.options_with_class_includes(options) if method.to_s == 'get'
+      super(method, path, options)
     end
   end
 end

@@ -4,7 +4,7 @@ describe Taskrabbit::Account do
   describe "account properties" do
     before :all do
       tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
-      VCR.use_cassette('account/properties', :record => :new_episodes) do
+      VCR.use_cassette('account/properties', :record => :none) do
         @user = tr.account
         @user.fetch
       end
@@ -32,7 +32,7 @@ describe Taskrabbit::Account do
     describe ".account" do
       it "should return an error if the user is not passed" do
         tr = Taskrabbit::Api.new
-        VCR.use_cassette('account/no_user', :record => :new_episodes) do
+        VCR.use_cassette('account/no_user', :record => :none) do
           tr_account = nil
           expect { tr_account = tr.account }.to_not raise_error
           expect { tr_account = tr_account.short_name }.to raise_error(Taskrabbit::Error, 'There must be an authenticated user for this action')
@@ -41,7 +41,7 @@ describe Taskrabbit::Account do
       
       it "should return the account of the user" do
         tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
-        VCR.use_cassette('account/with_user', :record => :new_episodes) do
+        VCR.use_cassette('account/with_user', :record => :none) do
           tr_account = nil
           expect { tr_account = tr.account }.to_not raise_error
           tr_account.short_name.should == 'Bob'
@@ -52,7 +52,7 @@ describe Taskrabbit::Account do
     describe ".tasks" do
       it "should fetch the tasks of the user" do
         tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
-        VCR.use_cassette('account/tasks', :record => :new_episodes) do
+        VCR.use_cassette('account/tasks', :record => :none) do
           tr_account = nil
           expect { tr_account = tr.account }.to_not raise_error
           account_tasks = tr_account.tasks.all

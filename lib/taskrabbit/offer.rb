@@ -4,7 +4,7 @@ module Taskrabbit
     property :charge_price
     property :comment
     property :state
-    property :runner, :transformer => User
+    property :runner_id
     
     class << self
       def all(scope, options = {})

@@ -2,49 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :get
-    uri: https://taskrabbitdev.com/api/v1/users/49720/tasks?
-    body: 
-    headers:
-      x-client-application:
-      - <API_SECRET>
-      authorization:
-      - OAuth <USER_WITH_CARD>
-  response: !ruby/struct:VCR::Response
-    status: !ruby/struct:VCR::ResponseStatus
-      code: 200
-      message: OK
-    headers:
-      etag:
-      - ! '"81c43af66182714b81997a339b33bbd0"'
-      content-type:
-      - application/json; charset=utf-8
-      x-runtime:
-      - '6667'
-      server:
-      - WEBrick/1.3.1 (Ruby/1.8.7/2011-02-18)
-      date:
-      - Sat, 17 Mar 2012 23:13:27 GMT
-      content-length:
-      - '4186'
-      cache-control:
-      - private, max-age=0, must-revalidate
-    body: ! '{"items":[{"city":{"name":"New York City","lng":-74.005973,"id":4,"links":{"get":"/api/v1/cities/4"},"lat":40.714353},"name":"My
-      First Task","charge_price":20,"named_price":20,"private_runner":false,"complete_by_time":1332093600,"cost_in_cents":0,"state_changed_at":1332025380,"id":22673,"runners":{"items":[]},"links":{"html":"http://local.taskrabbit.com/tasks/my-first-task--47","get":"/api/v1/tasks/22673","delete":"/api/v1/tasks/22673","put":"/api/v1/tasks/22673","authenticated":"http://local.taskrabbit.com/go/2f249e87a04016d741f163fe991468737e367c8e334eb5d5a53a63d741ce0019ba1a9c33366a76cadc06bdcb9259c5549a44"},"state_label":"posted","assign_by_time":1332082800,"state":"opened"},{"city":{"name":"New
-      York City","lng":-74.005973,"id":4,"links":{"get":"/api/v1/cities/4"},"lat":40.714353},"name":"New
-      Name","charge_price":20,"named_price":20,"private_runner":false,"complete_by_time":1332093600,"cost_in_cents":0,"state_changed_at":1332025387,"id":22674,"runners":{"items":[]},"links":{"html":"http://local.taskrabbit.com/tasks/new-name--3","get":"/api/v1/tasks/22674","delete":"/api/v1/tasks/22674","put":"/api/v1/tasks/22674","authenticated":"http://local.taskrabbit.com/go/459b5e05e7a6542891148717ed9cdd4a25fb5d5f71f094c098a93beb25ba26303c4ea5e2c8e01da3743703abbe1da5b46980"},"state_label":"posted","assign_by_time":1332082800,"state":"opened"},{"city":{"name":"New
-      York City","lng":-74.005973,"id":4,"links":{"get":"/api/v1/cities/4"},"lat":40.714353},"name":"My
-      First Task","charge_price":20,"named_price":20,"private_runner":false,"complete_by_time":1332093600,"cost_in_cents":0,"state_changed_at":1332025394,"id":22675,"runners":{"items":[]},"links":{"html":"http://local.taskrabbit.com/tasks/my-first-task--49","get":"/api/v1/tasks/22675","delete":"/api/v1/tasks/22675","put":"/api/v1/tasks/22675","authenticated":"http://local.taskrabbit.com/go/a89862d84f6a3b8b3175c46bc824ba3c4086519395730898237d56ef90ad672e540e62370c6a87b6c6ec2f601c10e2486ba7"},"state_label":"posted","assign_by_time":1332082800,"state":"opened"},{"city":{"name":"New
-      York City","lng":-74.005973,"id":4,"links":{"get":"/api/v1/cities/4"},"lat":40.714353},"name":"My
-      First Task","charge_price":20,"named_price":20,"private_runner":false,"complete_by_time":1332093600,"cost_in_cents":0,"state_changed_at":1332025970,"id":22679,"runners":{"items":[]},"links":{"html":"http://local.taskrabbit.com/tasks/my-first-task--53","get":"/api/v1/tasks/22679","delete":"/api/v1/tasks/22679","put":"/api/v1/tasks/22679","authenticated":"http://local.taskrabbit.com/go/5a5d27db65887f4b787f19c3c32dbfcf59aabd1943575f7b5d9030f9b984573dbbca1e58d2cd4297b6bf0ec7ccaa3e849db9"},"state_label":"posted","assign_by_time":1332082800,"state":"opened"},{"city":{"name":"New
-      York City","lng":-74.005973,"id":4,"links":{"get":"/api/v1/cities/4"},"lat":40.714353},"name":"New
-      Name","charge_price":20,"named_price":20,"private_runner":false,"complete_by_time":1332093600,"cost_in_cents":0,"state_changed_at":1332025978,"id":22680,"runners":{"items":[]},"links":{"html":"http://local.taskrabbit.com/tasks/new-name--4","get":"/api/v1/tasks/22680","delete":"/api/v1/tasks/22680","put":"/api/v1/tasks/22680","authenticated":"http://local.taskrabbit.com/go/78196cf7905ad6c4b1fb0e4df943b284253a8880163ee3675cdf4b06a9b9de63f6b1cc198064ac121d7afce702d81be0fb03"},"state_label":"posted","assign_by_time":1332082800,"state":"opened"},{"city":{"name":"New
-      York City","lng":-74.005973,"id":4,"links":{"get":"/api/v1/cities/4"},"lat":40.714353},"name":"My
-      First Task","charge_price":20,"named_price":20,"private_runner":false,"complete_by_time":1332093600,"cost_in_cents":0,"state_changed_at":1332025986,"id":22681,"runners":{"items":[]},"links":{"html":"http://local.taskrabbit.com/tasks/my-first-task--55","get":"/api/v1/tasks/22681","delete":"/api/v1/tasks/22681","put":"/api/v1/tasks/22681","authenticated":"http://local.taskrabbit.com/go/aee487c3c205df11defb1eeb83dab50de7f670769edcd82455eae92f776d6e6ef0dd7b1aacbea7c05ede923baf3a1343bcc6"},"state_label":"posted","assign_by_time":1332082800,"state":"opened"}],"links":{"get":"/api/v1/users/49720/tasks","last":"/api/v1/users/49720/tasks?page=1","first":"/api/v1/users/49720/tasks?page=1"}}'
-    http_version: '1.1'
-- !ruby/struct:VCR::HTTPInteraction
-  request: !ruby/struct:VCR::Request
-    method: :get
-    uri: https://taskrabbitdev.com:443/api/v1/users/40/tasks?
+    uri: https://taskrabbitdev.com/api/v1/users/40/tasks?include[task][]=errors&include[task][]=links&include[task][]=error&include[task][]=id&include[task][]=name&include[task][]=user&include[task][]=runner&include[task][]=runners&include[task][]=named_price&include[task][]=charge_price&include[task][]=cost_in_cents&include[task][]=number_runners_to_fill&include[task][]=state_label&include[task][]=city_id&include[task][]=city&include[task][]=description&include[task][]=private_description&include[task][]=private_runner&include[task][]=virtual&include[task][]=state&include[task][]=assignment_type&include[task][]=complete_by_time&include[task][]=state_changed_at&include[task][]=assign_by_time&include[task][]=location_visits&include[task][]=offers&include[task][]=other_locations_attributes&include[task][]=uploaded_photos_attributes&include[task][]=uploaded_sounds_attributes
     body: 
     headers:
       x-client-application:
