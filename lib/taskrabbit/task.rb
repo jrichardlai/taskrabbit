@@ -30,13 +30,17 @@ module Taskrabbit
 
     class << self
       def all(scope, options = {})
-        scope.request('get', scope.association_path(self), Api::collection_transformers[self], options)
+        scope.request('get', scope.association_path(self), Api::collection_transformers[self], options_with_class_includes(options))
       end
       
       def create(api, params)
         task = api.tasks.new(params)
         task.save
         task
+      end
+
+      def options_with_class_includes(options = {})
+        options.merge(:extra_query => {:include => {:task => properties.to_a}})
       end
     end
     
@@ -65,6 +69,10 @@ module Taskrabbit
 
     def delete!
       reload('delete', "tasks/#{id.to_s}")
+    end
+
+    def reload(method, path, options = {})
+      super(method, path, self.class.options_with_class_includes(options))
     end
   end
 end
