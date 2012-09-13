@@ -2,11 +2,11 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :get
-    uri: http://localhost:3000/api/v1/cities?
+    uri: https://taskrabbitdev.com/api/v1/cities?
     body: 
     headers: 
       x-client-application: 
-      - euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn
+      - <API_SECRET>
       authorization: 
       - OAuth
   response: !ruby/struct:VCR::Response 

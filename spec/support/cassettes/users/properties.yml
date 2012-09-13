@@ -1,32 +1,40 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
     method: :get
-    uri: http://localhost:3000/api/v1/users/49720?
+    uri: https://taskrabbitdev.com:443/api/v1/users/40?
     body: 
-    headers: 
-      x-client-application: 
-      - euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn
-      authorization: 
-      - OAuth RhyRtRg1bRNyqmdozkY6JJJ3eGDpoRGTm9AXUudp
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+    headers:
+      x-client-application:
+      - <API_SECRET>
+      authorization:
+      - OAuth <USER_WITH_CARD>
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
-    headers: 
-      etag: 
-      - "\"d6539897f406d89d093ac69eadc07e59\""
-      content-type: 
+    headers:
+      server:
+      - nginx/1.0.11
+      date:
+      - Wed, 12 Sep 2012 23:03:42 GMT
+      content-type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "644"
-      server: 
-      - WEBrick/1.3.1 (Ruby/1.8.7/2011-02-18)
-      date: 
-      - Sat, 17 Mar 2012 23:13:18 GMT
-      content-length: 
-      - "397"
-      cache-control: 
-      - private, max-age=0, must-revalidate
-    body: "{\"city\":{\"name\":\"SF Bay Area\",\"lng\":-122.419416,\"id\":3,\"links\":{\"get\":\"/api/v1/cities/3\"},\"lat\":37.77493},\"zip_code\":\"64321\",\"id\":49720,\"short_name\":\"Bob\",\"full_name\":\"Bob Sponge\",\"last_name\":\"Sponge\",\"links\":{\"get\":\"/api/v1/users/49720\",\"avatar_url\":\"http://local.taskrabbit.com/images/default_avatars/poster_thumb.png\"},\"display_name\":\"Bob S.\",\"email\":\"bobsponge@example.com\",\"first_name\":\"Bob\"}"
-    http_version: "1.1"
+      status:
+      - 200 OK
+      set-cookie:
+      - current_geo=1053; path=/; expires=Tue, 13-Nov-2012 00:03:42 GMT
+      x-runtime:
+      - '0.087765'
+      content-length:
+      - '466'
+      etag:
+      - ! '"c9d1f78611ffb0dd20f73d8b07432075"'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      cache-control:
+      - max-age=0, private, must-revalidate
+    body: ! '{"links":{"get":"/api/v1/users/40","avatar_url":"http://s-app1.taskrabbit.com/images/default_avatars/poster_thumb.png"},"first_name":"UserWith","friend_code_url":"http://taskrabbit.com/PAL/40","id":40,"short_name":"UserWith","display_name":"UserWith
+      c.","last_name":"card","city":{"links":{"get":"/api/v1/cities/3"},"lat":37.77493,"id":1053,"lng":-122.419416,"name":"SF
+      Bay Area"},"zip_code":"12345","full_name":"UserWith card","email":"userwithcard@taskrabbit.com"}'
+    http_version: '1.1'

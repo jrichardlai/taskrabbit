@@ -6,7 +6,7 @@ describe Taskrabbit::City do
 
     before :all do
       tr = Taskrabbit::Api.new
-      VCR.use_cassette('cities/properties', :record => :new_episodes) do
+      VCR.use_cassette('cities/properties', :record => :none) do
         @city = tr.cities.find(3)
         @city.fetch
       end
@@ -25,7 +25,7 @@ describe Taskrabbit::City do
     describe "#all" do
       it "should fetch all cities" do
         tr = Taskrabbit::Api.new
-        VCR.use_cassette('cities/all', :record => :new_episodes) do
+        VCR.use_cassette('cities/all', :record => :none) do
           cities = nil
           expect { cities = tr.cities }.to_not raise_error
           cities.should == Taskrabbit::City
@@ -49,7 +49,7 @@ describe Taskrabbit::City do
 
       it "should should fetch the city" do
         tr = Taskrabbit::Api.new
-        VCR.use_cassette('cities/find', :record => :new_episodes) do
+        VCR.use_cassette('cities/find', :record => :none) do
           city = nil
           expect { city = tr.cities.find(3) }.to_not raise_error
           city.id.should == 3

@@ -6,29 +6,29 @@ describe Taskrabbit::Task do
 
     before :all do
       tr = Taskrabbit::Api.new
-      VCR.use_cassette('tasks/properties', :record => :new_episodes) do
-        @tr_task = tr.tasks.find(22545)
+      VCR.use_cassette('tasks/properties', :record => :none) do
+        @tr_task = tr.tasks.find(ENV['TASK_ID'])
         @tr_task.fetch
       end
     end
 
     subject { @tr_task }
 
-    its(:id) { should == 22545 }
-    its(:name) { should == "2 Hours of House Cleaning + 1 Hour of House Chores" }
+    its(:id) { should == ENV['TASK_ID'].to_i }
+    its(:name) { should == "House Cleaning" }
     its(:user) { should be_instance_of(Taskrabbit::User) }
-    its(:runner) { should be_instance_of(Taskrabbit::User) }
+    its(:runner) { should be_nil }
     its(:runners) { should be_a(Taskrabbit::Collection) }
     its(:cost_in_cents) { should == 0 }
-    its(:description) { should == '' }
+    its(:description) { should == 'I need to clean my house' }
     its(:private_description) { should == '' }
     its(:named_price) { should == nil }
     its(:charge_price) { should == nil }
     its(:cost_in_cents) { should == 0 }
     its(:private_runner) { should == false }
     its(:virtual) { should == false }
-    its(:state) { should == 'closed' }
-    its(:state_label) { should == 'closed' }
+    its(:state) { should == 'opened' }
+    its(:state_label) { should == 'posted' }
     its(:location_visits) { should be_nil }
     its(:city) { should be_instance_of(Taskrabbit::City) }
     its(:assign_by_time) { should be_instance_of(Time) }
@@ -55,7 +55,7 @@ describe Taskrabbit::Task do
     describe "#tasks" do
       it "should fetch tasks only once" do
         tr = Taskrabbit::Api.new
-        VCR.use_cassette('tasks/all', :record => :new_episodes) do
+        VCR.use_cassette('tasks/all', :record => :none) do
           tr_tasks = nil
           expect { tr_tasks = tr.tasks }.to_not raise_error
           tr_tasks.first.should be_instance_of(Taskrabbit::Task)
@@ -66,7 +66,7 @@ describe Taskrabbit::Task do
 
       it "should refetch tasks if passed :reload => true" do
         tr = Taskrabbit::Api.new
-        VCR.use_cassette('tasks/all', :record => :new_episodes) do
+        VCR.use_cassette('tasks/all', :record => :none) do
           tr_tasks = nil
           expect { tr_tasks = tr.tasks }.to_not raise_error
           tr_tasks.first.should be_instance_of(Taskrabbit::Task)
@@ -96,10 +96,10 @@ describe Taskrabbit::Task do
 
       it "should fetch tasks" do
         tr = Taskrabbit::Api.new
-        VCR.use_cassette('tasks/find', :record => :new_episodes) do
+        VCR.use_cassette('tasks/find', :record => :none) do
           tr_task = nil
           expect { 
-            tr_task = tr.tasks.find(22545)
+            tr_task = tr.tasks.find(ENV['TASK_ID'])
             tr_task.name
           }.to_not raise_error
           tr_task.should be_instance_of(Taskrabbit::Task)
@@ -111,7 +111,7 @@ describe Taskrabbit::Task do
     describe "#delete!" do
       it "should request DELETE /tasks/#id" do
         tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
-        VCR.use_cassette('tasks/delete', :record => :new_episodes) do
+        VCR.use_cassette('tasks/delete', :record => :none) do
           tr_task = nil
           tr_task = tr.tasks.create(valid_params)
           tr_task.should be_instance_of(Taskrabbit::Task)
@@ -134,7 +134,7 @@ describe Taskrabbit::Task do
 
       it "should create a new task if new" do
         tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
-        VCR.use_cassette('tasks/save', :record => :new_episodes) do
+        VCR.use_cassette('tasks/save', :record => :none) do
           tr_task = nil
           tr_task = tr.tasks.new(valid_params)
           tr_task.should be_instance_of(Taskrabbit::Task)
@@ -147,7 +147,7 @@ describe Taskrabbit::Task do
 
       it "should update the task if existing" do
         tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
-        VCR.use_cassette('tasks/update', :record => :new_episodes) do
+        VCR.use_cassette('tasks/update', :record => :none) do
           tr_task = tr.tasks.find(tr.tasks.create(valid_params).id)
           tr_task.name = "New Name"
           tr_task.save.should == true
@@ -160,7 +160,7 @@ describe Taskrabbit::Task do
       context "with valid params" do
         it "should return an error if the user is not logged in" do
           tr = Taskrabbit::Api.new
-          VCR.use_cassette('tasks/create/without_user', :record => :new_episodes) do
+          VCR.use_cassette('tasks/create/without_user', :record => :none) do
             tr_task = nil
             expect { tr_task = tr.tasks.create(valid_params) }.to raise_error(Taskrabbit::Error, 'There must be an authenticated user for this action')
             tr_task.should be_nil
@@ -173,7 +173,7 @@ describe Taskrabbit::Task do
       context "with valid params" do
         it "should return an error if the user is not logged in" do
           tr = Taskrabbit::Api.new
-          VCR.use_cassette('tasks/create/without_user', :record => :new_episodes) do
+          VCR.use_cassette('tasks/create/without_user', :record => :none) do
             tr_task = nil
             expect { tr_task = tr.tasks.create(valid_params) }.to raise_error(Taskrabbit::Error, 'There must be an authenticated user for this action')
             tr_task.should be_nil
@@ -182,7 +182,7 @@ describe Taskrabbit::Task do
 
         it "should create the task if the user is authenticated but does not have a credit card" do
           tr = Taskrabbit::Api.new(TR_USERS[:without_card][:secret])
-          VCR.use_cassette('tasks/create/without_credit_card', :record => :new_episodes) do
+          VCR.use_cassette('tasks/create/without_credit_card', :record => :none) do
             tr_task = tr.tasks.new(valid_params)
             tr_task.save.should == false
             tr_task.should be_instance_of(Taskrabbit::Task)
@@ -193,7 +193,7 @@ describe Taskrabbit::Task do
 
         it "should create the task if the user is authenticated and has a credit card" do
           tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
-          VCR.use_cassette('tasks/create/default', :record => :new_episodes) do
+          VCR.use_cassette('tasks/create/default', :record => :none) do
             tr_task = nil
             expect { tr_task = tr.tasks.create(valid_params) }.to_not raise_error
             tr_task.should be_instance_of(Taskrabbit::Task)
@@ -202,7 +202,7 @@ describe Taskrabbit::Task do
 
         it "should create the task using the account" do
           tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
-          VCR.use_cassette('tasks/create/using_account', :record => :new_episodes) do
+          VCR.use_cassette('tasks/create/using_account', :record => :none) do
             tr_task = nil
             expect { tr_task = tr.account.tasks.create(valid_params) }.to_not raise_error
             tr_task.should be_instance_of(Taskrabbit::Task)
@@ -215,7 +215,7 @@ describe Taskrabbit::Task do
 
         it "should create the task if the user is authenticated and has a credit card" do
           tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
-          VCR.use_cassette('tasks/create/with_invalid_params', :record => :new_episodes) do
+          VCR.use_cassette('tasks/create/with_invalid_params', :record => :none) do
             tr_task = nil
             tr_task = tr.tasks.create(invalid_params)
             tr_task.should be_instance_of(Taskrabbit::Task)
@@ -228,7 +228,7 @@ describe Taskrabbit::Task do
       
       it "should post locations" do
         tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
-        VCR.use_cassette('tasks/create/with_location', :record => :new_episodes) do
+        VCR.use_cassette('tasks/create/with_location', :record => :none) do
           tr_task = nil
           params_with_locations = valid_params.merge({:other_locations_attributes => [
             {

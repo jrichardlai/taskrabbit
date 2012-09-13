@@ -23,19 +23,24 @@ module Taskrabbit
     property :state_changed_at, :transformer => TIME_TRANSFORMER
     property :assign_by_time, :transformer => TIME_TRANSFORMER
     property :location_visits, :transformer => Api::collection_transformers[Location]
+    property :offers, :transformer => Api::collection_transformers[Offer]
     property :other_locations_attributes
     property :uploaded_photos_attributes
     property :uploaded_sounds_attributes
 
     class << self
       def all(scope, options = {})
-        scope.request('get', scope.association_path(self), Api::collection_transformers[self], options)
+        scope.request('get', scope.association_path(self), Api::collection_transformers[self], options_with_class_includes(options))
       end
       
       def create(api, params)
         task = api.tasks.new(params)
         task.save
         task
+      end
+
+      def options_with_class_includes(options = {})
+        options.merge(:extra_query => {:include => {:task => properties.to_a}})
       end
     end
     
@@ -64,6 +69,11 @@ module Taskrabbit
 
     def delete!
       reload('delete', "tasks/#{id.to_s}")
+    end
+
+    def reload(method, path, options = {})
+      options = self.class.options_with_class_includes(options) if method.to_s == 'get'
+      super(method, path, options)
     end
   end
 end

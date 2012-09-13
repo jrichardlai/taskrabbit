@@ -2,13 +2,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :get
-    uri: http://localhost:3000/api/v1/account?
+    uri: https://taskrabbitdev.com/api/v1/account?
     body: 
     headers: 
-      x-client-application: 
-      - euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn
-      authorization: 
-      - OAuth RhyRtRg1bRNyqmdozkY6JJJ3eGDpoRGTm9AXUudp
+      x-client-application:
+      - <API_SECRET>
+      authorization:
+      - OAuth <USER_WITH_CARD>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 200
@@ -33,13 +33,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :get
-    uri: http://localhost:3000/api/v1/users/49720/locations?
+    uri: https://taskrabbitdev.com/api/v1/users/49720/locations?
     body: 
     headers: 
       x-client-application: 
-      - euqmQpzV04GmN1dJTY639PdI7eiSjCjI3lKTkPWn
+      - <API_SECRET>
       authorization: 
-      - OAuth RhyRtRg1bRNyqmdozkY6JJJ3eGDpoRGTm9AXUudp
+      - OAuth <USER_WITH_CARD>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 200

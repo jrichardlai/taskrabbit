@@ -32,7 +32,7 @@ module Taskrabbit
     def request_params(transformer, options = {})
       {
         :transform => transformer,
-        :extra_body => options,
+        :extra_query => options[:extra_query] || {},
         :extra_request => {
           :headers => {
             'X-Client-Application' => api_secret.to_s, 

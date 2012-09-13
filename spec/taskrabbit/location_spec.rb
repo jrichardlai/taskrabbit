@@ -6,7 +6,7 @@ describe Taskrabbit::Location do
 
     before :all do
       tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
-      VCR.use_cassette('locations/properties', :record => :new_episodes) do
+      VCR.use_cassette('locations/properties', :record => :none) do
         @location = tr.account.locations.first
       end
     end

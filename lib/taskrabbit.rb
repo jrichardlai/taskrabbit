@@ -14,6 +14,7 @@ module Taskrabbit
   autoload :User,        "taskrabbit/user"
   autoload :City,        "taskrabbit/city"
   autoload :Location,    "taskrabbit/location"
+  autoload :Offer,       "taskrabbit/offer"
 
   extend Config
 end
