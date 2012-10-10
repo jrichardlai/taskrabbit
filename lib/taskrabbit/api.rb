@@ -33,6 +33,7 @@ module Taskrabbit
       {
         :transform => transformer,
         :extra_query => options[:extra_query] || {},
+        :extra_body => options,
         :extra_request => {
           :headers => {
             'X-Client-Application' => api_secret.to_s, 
