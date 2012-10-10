@@ -44,6 +44,25 @@ describe Taskrabbit::Smash do
       subject.redirect?.should == true
     end
   end
+
+  describe "#filtered_options" do
+    it "returns a hash" do
+      Taskrabbit::Smash::filtered_options({}).should == {}
+    end
+
+    it "convert ints" do
+      Taskrabbit::Smash::filtered_options(
+        {:val => 'a', :time => Time.parse('2011-10-12')}
+      ).should == {:val => 'a', :time => 1318402800}
+    end
+
+    it "works for nested values" do
+      Taskrabbit::Smash::filtered_options(
+        {:a => {:val => 'a', :time => Time.parse('2011-10-12')}, :b => 'c'}
+      ).should == {:a => {:val => 'a', :time => 1318402800}, :b => 'c'}
+
+    end
+  end
   
   describe "#valid?" do
     it "should return true" do

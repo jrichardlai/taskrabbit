@@ -14,6 +14,22 @@ module Taskrabbit
         raise Taskrabbit::Error.new("Couldn't find #{self} without an ID") if id.nil?
         new({:id => id}, api)
       end
+
+      def filtered_options(options)
+        filtered_hash = {}
+        options.each_pair do |key, value|
+          filtered_hash[key] = 
+          case value
+          when Time
+            value.to_i
+          when Hash
+            filtered_options(value)
+          else
+            value
+          end
+        end
+        filtered_hash
+      end
     end
 
     class Error < Taskrabbit::Error
@@ -46,7 +62,7 @@ module Taskrabbit
     # reload the object after doing a query to the api
     def reload(method, path, options = {})
       self.loaded = true
-      response = request(method, path, self.class, options)
+      response = request(method, path, self.class, Smash::filtered_options(options))
       self.merge!(response)
       clear_errors
       !redirect?
@@ -77,6 +93,5 @@ module Taskrabbit
     def clear_errors
       %w{error errors}.map { |k| self.delete(k) }
     end
-
   end
 end
