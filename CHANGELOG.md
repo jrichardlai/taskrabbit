@@ -1,6 +1,8 @@
-## v0.0.7
+## v0.0.8
 
 * Fix Time params submission
+
+## v0.0.7
 
 ## v0.0.6
 
