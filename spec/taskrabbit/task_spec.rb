@@ -225,6 +225,20 @@ describe Taskrabbit::Task do
           end
         end
       end
+
+      it "should set the correct times" do
+        tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])
+        VCR.use_cassette('tasks/create/with_times', :record => :none) do
+          tr_task = tr.tasks.new(valid_params)
+          tr_task.complete_by_time = Time.parse("2023-12-12 12:10")
+          tr_task.assign_by_time   = Time.parse("2023-12-01 13:10")
+          expect { tr_task.save }.to_not raise_error
+
+          reloaded_task = tr.tasks.find(tr_task.id)
+          tr_task.complete_by_time.to_s.should == '2023-12-12 12:10:00 -0800'
+          tr_task.assign_by_time.to_s.should   == '2023-12-01 13:10:00 -0800'
+        end
+      end
       
       it "should post locations" do
         tr = Taskrabbit::Api.new(TR_USERS[:with_card][:secret])

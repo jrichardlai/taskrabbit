@@ -1,0 +1,45 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: https://taskrabbitdev.com:443/api/v1/tasks?
+    body: task[description]=&task[private_description]=&task[private_runner]=false&task[virtual]=false&task[name]=My%20First%20Task&task[named_price]=20&task[city_id]=4&task[complete_by_time]=1702411800&task[assign_by_time]=1701465000
+    headers:
+      x-client-application:
+      - <API_SECRET>
+      authorization:
+      - OAuth <USER_WITH_CARD>
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/1.0.11
+      date:
+      - Wed, 10 Oct 2012 05:38:58 GMT
+      content-type:
+      - application/json; charset=utf-8
+      status:
+      - 200 OK
+      etag:
+      - ! '"2a1d2e4369a81524428d843953cb1484"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      set-cookie:
+      - current_geo=1053; path=/; expires=Mon, 10-Dec-2012 06:38:58 GMT; secure
+      x-runtime:
+      - '0.532811'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      strict-transport-security:
+      - max-age=31536000
+      content-length:
+      - '1040'
+    body: ! '{"charge_price":20,"id":132,"named_price":20,"runners":{"items":[]},"cost_in_cents":0,"assign_by_time":1701465000,"assignment_type":"auto","description_properties":[{"value":"","title":"Description","key":"description"},{"value":"","title":"Private
+      description","key":"private_description"},{"value":1701465000,"title":"If unassigned,
+      Task will expire on","key":"assign_by_time"},{"value":1702411800,"title":"Task
+      should be completed by","key":"complete_by_time"}],"state_label":"posted","city":{"id":1060,"lng":-74.005973,"lat":40.714353,"name":"New
+      York City","links":{"get":"/api/v1/cities/4"}},"state_changed_at":1349847538,"name":"My
+      First Task","state":"opened","private_runner":false,"complete_by_time":1702411800,"runner_fee":0,"links":{"put":"/api/v1/tasks/132","html":"http://s-app1.taskrabbit.com/tasks/my-first-task--15","get":"/api/v1/tasks/132","authenticated":"http://s-app1.taskrabbit.com/go/f628a10b1384beb11bd617706d93ecec821e47520a27c9cd0b71f64399e289ec3d66c5d247d6248768f2a5fb47a7267e7360","delete":"/api/v1/tasks/132"}}'
+    http_version: '1.1'
