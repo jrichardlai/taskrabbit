@@ -5,6 +5,7 @@ module Taskrabbit
     property :address
     property :approximate_radius
     property :city
+    property :location_id
     property :zip
     property :partial
     property :state
