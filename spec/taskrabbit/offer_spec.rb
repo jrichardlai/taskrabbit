@@ -18,6 +18,6 @@ describe Taskrabbit::Location do
     its(:id                ) { should == 7 }
     its(:charge_price      ) { should == 26 }
     its(:state             ) { should == "sent" }
-    its(:runner_id         ) { should == 31 }
+    its(:runner_id         ) { should == 32 }
   end
 end

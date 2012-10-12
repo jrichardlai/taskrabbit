@@ -45,3 +45,47 @@
       unassigned, Task will expire on"},{"value":1347663600,"key":"complete_by_time","title":"Task
       should be completed by"}],"state":"opened"}'
     http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: https://taskrabbitdev.com:443/api/v1/tasks/52?include[task][]=errors&include[task][]=links&include[task][]=error&include[task][]=id&include[task][]=name&include[task][]=user&include[task][]=runner&include[task][]=runners&include[task][]=named_price&include[task][]=charge_price&include[task][]=cost_in_cents&include[task][]=number_runners_to_fill&include[task][]=state_label&include[task][]=geography_id&include[task][]=city&include[task][]=description&include[task][]=private_description&include[task][]=private_runner&include[task][]=virtual&include[task][]=state&include[task][]=assignment_type&include[task][]=complete_by_time&include[task][]=state_changed_at&include[task][]=assign_by_time&include[task][]=location_visits&include[task][]=offers&include[task][]=other_locations_attributes&include[task][]=uploaded_photos_attributes&include[task][]=uploaded_sounds_attributes
+    body: 
+    headers:
+      x-client-application:
+      - <API_SECRET>
+      authorization:
+      - OAuth
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/1.0.11
+      date:
+      - Fri, 12 Oct 2012 06:48:21 GMT
+      content-type:
+      - application/json; charset=utf-8
+      status:
+      - 200 OK
+      etag:
+      - ! '"113afdc7a5baebcef5c807c002535ed0"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-runtime:
+      - '0.081255'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      strict-transport-security:
+      - max-age=31536000
+      content-length:
+      - '1171'
+    body: ! '{"user":{"id":40,"short_name":"UserWith","display_name":"UserWith c.","city":{"id":1053,"lng":-122.419416,"lat":37.77493,"name":"SF
+      Bay Area","links":{"get":"/api/v1/cities/3"}},"full_name":"UserWith c.","links":{"avatar_url":"http://s-app1.taskrabbit.com/images/default_avatars/poster_thumb.png","get":"/api/v1/users/40"},"friend_code_url":"http://taskrabbit.com/PAL/40"},"id":52,"location_visits":{"items":[{"zip":"94102","address":"Powell
+      Street, San Francisco, CA","approximate_radius":0.5,"lng":-122.4054037525,"lat":37.7861750088,"complete":"Powell
+      Street, San Francisco, CA, San Francisco, CA 94102","city":"San Francisco","name":"Home","state":"CA","partial":"Powell
+      Street, San Francisco, CA, San Francisco, CA 94102"}]},"runners":{"items":[]},"cost_in_cents":0,"assign_by_time":1347577200,"state_label":"posted","description":"I
+      need to clean my house","city":{"id":1053,"lng":-122.419416,"lat":37.77493,"name":"SF
+      Bay Area","links":{"get":"/api/v1/cities/3"}},"state_changed_at":1347490579,"name":"House
+      Cleaning","state":"opened","complete_by_time":1347663600,"links":{"html":"http://s-app1.taskrabbit.com/tasks/house-cleaning-7091","get":"/api/v1/tasks/52"}}'
+    http_version: '1.1'

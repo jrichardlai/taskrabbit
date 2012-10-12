@@ -1,63 +1,89 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
     method: :post
-    uri: https://taskrabbitdev.com/api/v1/tasks?
-    body: task[name]=My%20First%20Task&task[named_price]=20&task[city_id]=4
-    headers: 
-      x-client-application: 
+    uri: https://taskrabbitdev.com:443/api/v1/tasks?
+    body: task[description]=&task[private_description]=&task[private_runner]=false&task[virtual]=false&task[name]=My%20First%20Task&task[named_price]=20&task[geography_id]=4
+    headers:
+      x-client-application:
       - <API_SECRET>
-      authorization: 
+      authorization:
       - OAuth <USER_WITH_CARD>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
-    headers: 
-      etag: 
-      - "\"3e2534e6d1fbd01d8fd94342e21bf9c3\""
-      content-type: 
+    headers:
+      server:
+      - nginx/1.0.11
+      date:
+      - Fri, 12 Oct 2012 06:51:03 GMT
+      content-type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "4727"
-      server: 
-      - WEBrick/1.3.1 (Ruby/1.8.7/2011-02-18)
-      date: 
-      - Sat, 17 Mar 2012 23:12:59 GMT
-      content-length: 
-      - "677"
-      cache-control: 
-      - private, max-age=0, must-revalidate
-    body: "{\"name\":\"My First Task\",\"city\":{\"name\":\"New York City\",\"lng\":-74.005973,\"id\":4,\"links\":{\"get\":\"/api/v1/cities/4\"},\"lat\":40.714353},\"charge_price\":20,\"private_runner\":false,\"named_price\":20,\"complete_by_time\":1332093600,\"id\":22680,\"state_changed_at\":1332025978,\"cost_in_cents\":0,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/my-first-task--54\",\"get\":\"/api/v1/tasks/22680\",\"delete\":\"/api/v1/tasks/22680\",\"put\":\"/api/v1/tasks/22680\",\"authenticated\":\"http://local.taskrabbit.com/go/ee139b2757bbbf6c4eee502816d10ccc2e8ed72f608a44f3a3ba4d902e7d9f42f7411102b41821050c3f0a2be896dd812140\"},\"runners\":{\"items\":[]},\"state_label\":\"posted\",\"assign_by_time\":1332082800,\"state\":\"opened\"}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
+      status:
+      - 200 OK
+      etag:
+      - ! '"62aa2b40958e5d7c6ba7987a552f3126"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      set-cookie:
+      - current_geo=1053; path=/; expires=Wed, 12-Dec-2012 07:51:03 GMT; secure
+      x-runtime:
+      - '0.435780'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      strict-transport-security:
+      - max-age=31536000
+      content-length:
+      - '1038'
+    body: ! '{"charge_price":20,"id":143,"named_price":20,"runners":{"items":[]},"cost_in_cents":0,"assign_by_time":1350151200,"assignment_type":"auto","description_properties":[{"value":"","title":"Description","key":"description"},{"value":"","title":"Private
+      description","key":"private_description"},{"value":1350151200,"title":"If unassigned,
+      Task will expire on","key":"assign_by_time"},{"value":1350237600,"title":"Task
+      should be completed by","key":"complete_by_time"}],"state_label":"posted","city":{"id":1053,"lng":-122.419416,"lat":37.77493,"name":"SF
+      Bay Area","links":{"get":"/api/v1/cities/3"}},"state_changed_at":1350024663,"name":"My
+      First Task","state":"opened","private_runner":false,"complete_by_time":1350237600,"runner_fee":0,"links":{"put":"/api/v1/tasks/143","html":"http://s-app1.taskrabbit.com/tasks/my-first-task--17","get":"/api/v1/tasks/143","authenticated":"http://s-app1.taskrabbit.com/go/16efc3604f4d592ae53b449187179fb829a8341090382ca5a7007f5fdac6a44e73b296d29f98824a5f8e7bff3b7772d9da3e","delete":"/api/v1/tasks/143"}}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
     method: :put
-    uri: https://taskrabbitdev.com/api/v1/tasks/22680?
-    body: name=New%20Name&id=22680
-    headers: 
-      x-client-application: 
+    uri: https://taskrabbitdev.com:443/api/v1/tasks/143?
+    body: description=&private_description=&private_runner=false&virtual=false&id=143&name=New%20Name
+    headers:
+      x-client-application:
       - <API_SECRET>
-      authorization: 
+      authorization:
       - OAuth <USER_WITH_CARD>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
-    headers: 
-      etag: 
-      - "\"8331cd17eb90f131337fc675d2d0fc5a\""
-      content-type: 
+    headers:
+      server:
+      - nginx/1.0.11
+      date:
+      - Fri, 12 Oct 2012 06:51:04 GMT
+      content-type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "2003"
-      server: 
-      - WEBrick/1.3.1 (Ruby/1.8.7/2011-02-18)
-      date: 
-      - Sat, 17 Mar 2012 23:13:02 GMT
-      content-length: 
-      - "666"
-      cache-control: 
-      - private, max-age=0, must-revalidate
-    body: "{\"name\":\"New Name\",\"city\":{\"name\":\"New York City\",\"lng\":-74.005973,\"id\":4,\"links\":{\"get\":\"/api/v1/cities/4\"},\"lat\":40.714353},\"charge_price\":20,\"private_runner\":false,\"named_price\":20,\"complete_by_time\":1332093600,\"id\":22680,\"state_changed_at\":1332025978,\"cost_in_cents\":0,\"links\":{\"html\":\"http://local.taskrabbit.com/tasks/new-name--4\",\"get\":\"/api/v1/tasks/22680\",\"delete\":\"/api/v1/tasks/22680\",\"put\":\"/api/v1/tasks/22680\",\"authenticated\":\"http://local.taskrabbit.com/go/78196cf7905ad6c4b1fb0e4df943b284253a8880163ee3675cdf4b06a9b9de63f6b1cc198064ac121d7afce702d81be0fb03\"},\"runners\":{\"items\":[]},\"state_label\":\"posted\",\"assign_by_time\":1332082800,\"state\":\"opened\"}"
-    http_version: "1.1"
+      status:
+      - 200 OK
+      etag:
+      - ! '"88da9728a352281ecfbf3f2e9de776f5"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      set-cookie:
+      - current_geo=1053; path=/; expires=Wed, 12-Dec-2012 07:51:04 GMT; secure
+      x-runtime:
+      - '0.485258'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      strict-transport-security:
+      - max-age=31536000
+      content-length:
+      - '1024'
+    body: ! '{"charge_price":20,"id":143,"named_price":20,"runners":{"items":[]},"cost_in_cents":0,"assign_by_time":1350151200,"assignment_type":"auto","description_properties":[{"value":"","title":"Description","key":"description"},{"value":"","title":"Private
+      description","key":"private_description"},{"value":1350151200,"title":"If unassigned,
+      Task will expire on","key":"assign_by_time"},{"value":1350237600,"title":"Task
+      should be completed by","key":"complete_by_time"}],"state_label":"posted","city":{"id":1053,"lng":-122.419416,"lat":37.77493,"name":"SF
+      Bay Area","links":{"get":"/api/v1/cities/3"}},"state_changed_at":1350024663,"name":"New
+      Name","state":"opened","private_runner":false,"complete_by_time":1350237600,"runner_fee":0,"links":{"put":"/api/v1/tasks/143","html":"http://s-app1.taskrabbit.com/tasks/new-name","get":"/api/v1/tasks/143","authenticated":"http://s-app1.taskrabbit.com/go/de977e86f3919b5c68143b8f921a2967beceb73b280a98bcd300ae33c1aca34d4688974006489b6e48eeea61fa64847b8342","delete":"/api/v1/tasks/143"}}'
+    http_version: '1.1'

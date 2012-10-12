@@ -29,7 +29,7 @@ describe Taskrabbit::Task do
     its(:virtual) { should == false }
     its(:state) { should == 'opened' }
     its(:state_label) { should == 'posted' }
-    its(:location_visits) { should be_nil }
+    its(:location_visits) { should be_a(Taskrabbit::Collection) }
     its(:city) { should be_instance_of(Taskrabbit::City) }
     its(:assign_by_time) { should be_instance_of(Time) }
     its(:complete_by_time) { should be_instance_of(Time) }
@@ -47,7 +47,7 @@ describe Taskrabbit::Task do
     {
       "name" => "My First Task", 
       "named_price" => 20, 
-      "city_id" => 4
+      "geography_id" => 4
     } 
   }
   
