@@ -261,8 +261,10 @@ describe Taskrabbit::Task do
             }
           ]})
           expect { tr_task = tr.tasks.create(params_with_locations) }.to_not raise_error
+
           tr_task.should be_instance_of(Taskrabbit::Task)
           tr_task.location_visits.count.should == 2
+          tr_task.keys.should_not include('other_locations_attributes')
         end
       end
     end

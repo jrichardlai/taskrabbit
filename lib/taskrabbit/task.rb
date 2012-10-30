@@ -28,7 +28,11 @@ module Taskrabbit
     property :uploaded_photos_attributes
     property :uploaded_sounds_attributes
 
+    @attributes_to_clear = [:other_locations_attributes, :uploaded_photos_attributes, :uploaded_sounds_attributes]
+
     class << self
+      attr_reader :attributes_to_clear
+
       def all(scope, options = {})
         scope.request('get', scope.association_path(self), Api::collection_transformers[self], options_with_class_includes(options))
       end
@@ -42,7 +46,7 @@ module Taskrabbit
       def options_with_class_includes(options = {})
         options.merge(:extra_query => {:include => {:task => properties.to_a}})
       end
-    end
+   end
     
     def fetch
       reload('get', "tasks/#{id.to_s}") unless id.nil?
@@ -72,8 +76,14 @@ module Taskrabbit
     end
 
     def reload(method, path, options = {})
-      options = self.class.options_with_class_includes(options) if method.to_s == 'get'
-      super(method, path, options)
+      options        = self.class.options_with_class_includes(options) if method.to_s == 'get'
+      reloaded_task  = super(method, path, options)
+      clear_update_attributes
+      reloaded_task
+    end
+
+    def clear_update_attributes
+      delete_if { |k, v| self.class.attributes_to_clear.include?(k.to_sym) }
     end
   end
 end
