@@ -3,7 +3,7 @@
   request: !ruby/struct:VCR::Request
     method: :post
     uri: https://taskrabbitdev.com:443/api/v1/tasks?
-    body: task[description]=&task[private_description]=&task[private_runner]=false&task[virtual]=false&task[name]=My%20First%20Task&task[named_price]=20&task[geography_id]=4
+    body: task[description]=&task[private_description]=&task[private_runner]=false&task[virtual]=false&task[name]=My%20First%20Task&task[named_price]=20&task[city_id]=4
     headers:
       x-client-application:
       - <API_SECRET>
@@ -46,7 +46,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :get
-    uri: https://taskrabbitdev.com:443/api/v1/tasks/142?include[task][]=errors&include[task][]=links&include[task][]=error&include[task][]=id&include[task][]=name&include[task][]=user&include[task][]=runner&include[task][]=runners&include[task][]=named_price&include[task][]=charge_price&include[task][]=cost_in_cents&include[task][]=number_runners_to_fill&include[task][]=state_label&include[task][]=geography_id&include[task][]=city&include[task][]=description&include[task][]=private_description&include[task][]=private_runner&include[task][]=virtual&include[task][]=state&include[task][]=assignment_type&include[task][]=complete_by_time&include[task][]=state_changed_at&include[task][]=assign_by_time&include[task][]=location_visits&include[task][]=offers&include[task][]=other_locations_attributes&include[task][]=uploaded_photos_attributes&include[task][]=uploaded_sounds_attributes
+    uri: https://taskrabbitdev.com:443/api/v1/tasks/142?include[task][]=errors&include[task][]=links&include[task][]=error&include[task][]=id&include[task][]=name&include[task][]=user&include[task][]=runner&include[task][]=runners&include[task][]=named_price&include[task][]=charge_price&include[task][]=cost_in_cents&include[task][]=number_runners_to_fill&include[task][]=state_label&include[task][]=city_id&include[task][]=city&include[task][]=description&include[task][]=private_description&include[task][]=private_runner&include[task][]=virtual&include[task][]=state&include[task][]=assignment_type&include[task][]=complete_by_time&include[task][]=state_changed_at&include[task][]=assign_by_time&include[task][]=location_visits&include[task][]=offers&include[task][]=other_locations_attributes&include[task][]=uploaded_photos_attributes&include[task][]=uploaded_sounds_attributes
     body: 
     headers:
       x-client-application:

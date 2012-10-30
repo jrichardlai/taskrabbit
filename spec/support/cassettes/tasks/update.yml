@@ -3,7 +3,7 @@
   request: !ruby/struct:VCR::Request
     method: :post
     uri: https://taskrabbitdev.com:443/api/v1/tasks?
-    body: task[description]=&task[private_description]=&task[private_runner]=false&task[virtual]=false&task[name]=My%20First%20Task&task[named_price]=20&task[geography_id]=4
+    body: task[description]=&task[private_description]=&task[private_runner]=false&task[virtual]=false&task[name]=My%20First%20Task&task[named_price]=20&task[city_id]=4
     headers:
       x-client-application:
       - <API_SECRET>

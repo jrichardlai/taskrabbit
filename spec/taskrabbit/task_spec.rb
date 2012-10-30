@@ -47,7 +47,7 @@ describe Taskrabbit::Task do
     {
       "name" => "My First Task", 
       "named_price" => 20, 
-      "geography_id" => 4
+      "city_id" => 4
     } 
   }
   

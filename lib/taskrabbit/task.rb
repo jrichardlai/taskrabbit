@@ -11,7 +11,7 @@ module Taskrabbit
     property :number_runners_to_fill
     property :links
     property :state_label
-    property :geography_id
+    property :city_id
     property :city, :transformer => City
     property :description, :default => ''
     property :private_description, :default => ''
